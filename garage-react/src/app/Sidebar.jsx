@@ -1,6 +1,6 @@
 export default function Sidebar(){
     return (<>
-      <main className="flex h-screen">
+
     <div className="corretor w-1/6"></div>
     <section className="funcionario_infos_container w-1/10 bg-00000056 border-r-2 border-[#77ffc0] fixed h-screen">
 
@@ -29,5 +29,5 @@ export default function Sidebar(){
 
       </div>
     </section>
-    </main></>)
+    </>)
 }
