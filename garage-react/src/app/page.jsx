@@ -7,7 +7,10 @@ export default function Home() {
   return(
     <>
     <Sidebar />
-    <Form />
+    
+    <Form>
+
+    </Form>
     </>
   )
 

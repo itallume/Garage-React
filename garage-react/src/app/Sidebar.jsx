@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Sidebar(){
     return (<>
 
@@ -14,16 +16,16 @@ export default function Sidebar(){
 
         <section className="options mt-8">
 
-          <div className="home"><a href="index.html"><i className="fas fa-home text-xs text-green-500 hover:text-white"></i>
-              <p>Home</p></a></div>
-          <div className="cadastrar_cliente"><a href="cliente.html"><i className="far fa-edit text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Cliente</p></a></div>
-          <div className="cadastrar_produto"><a href="mercadoria.html"><i className="fas fa-car-battery text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Mercadorias</p></a></div>
-          <div className="cadastrar_servico"><a href="servico.html"><i className="fas fa-cogs text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Serviços</p></a></div>
-          <div className="iniciar_venda"><a href="venda.html"><i className="fas fa-money-bill-alt text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Pedidos</p></a></div>
+          <div className="home"><Link href=""><i className="fas fa-home text-xs text-green-500 hover:text-white"></i>
+              <p>Home</p></Link></div>
+          <div className="cadastrar_cliente"><Link href=""><i className="far fa-edit text-xs text-green-500 hover:text-white"></i>
+              <p className="text-sm">Cliente</p></Link></div>
+          <div className="cadastrar_produto"><Link href=""><i className="fas fa-car-battery text-xs text-green-500 hover:text-white"></i>
+              <p className="text-sm">Mercadorias</p></Link></div>
+          <div className="cadastrar_servico"><Link href=""><i className="fas fa-cogs text-xs text-green-500 hover:text-white"></i>
+              <p className="text-sm">Serviços</p></Link></div>
+          <div className="iniciar_venda"><Link href=""><i className="fas fa-money-bill-alt text-xs text-green-500 hover:text-white"></i>
+              <p className="text-sm">Pedidos</p></Link></div>
 
         </section>
 
