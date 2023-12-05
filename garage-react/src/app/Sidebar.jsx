@@ -1,8 +1,6 @@
 import Link from 'next/link'
 
 
-import Link from "next/link";
-
 export default function Sidebar(){
     return (<>
     <div className="corretor w-1/6"></div>
@@ -28,17 +26,6 @@ export default function Sidebar(){
               <p className="text-sm">Serviços</p></Link></div>
           <div className="iniciar_venda"><Link href="/"><i className="fas fa-money-bill-alt text-xs text-green-500 hover:text-white"></i>
               <p className="text-sm">Pedidos</p></Link></div>
-          <div className="home"><Link href=""><i className="fas fa-home text-xs text-green-500 hover:text-white"></i>
-              <p>Home</p></Link></div>
-          <div className="cadastrar_cliente"><Link href=""><i className="far fa-edit text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Cliente</p></Link></div>
-          <div className="cadastrar_produto"><Link href=""><i className="fas fa-car-battery text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Mercadorias</p></Link></div>
-          <div className="cadastrar_servico"><Link href=""><i className="fas fa-cogs text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Serviços</p></Link></div>
-          <div className="iniciar_venda"><Link href=""><i className="fas fa-money-bill-alt text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Pedidos</p></Link></div>
-
         </section>
 
       </div>
