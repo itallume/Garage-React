@@ -1,6 +1,7 @@
 export default function Form(){
     return (<>
       <main className="flex h-screen">
+      <div className="x w-1/6"></div>
       <section className="w-4/5 flex justify-center items-center flex-col">
 
 
@@ -8,21 +9,21 @@ export default function Form(){
         <a className="material-symbols-outlined mt-12 cursor-pointer hover:text-[#00ff0059]" id="expandir">edit
         </a>
 
-        <section className="hidden justify-center align-center" id="formulario">
+        <section className=" justify-center align-center" id="formulario">
           <div className="justify-center items-center pt-[30px]">
             <form className="flex justify-center flex-col bg-[#574F73] px-8 py-8 rounded-lg" id="borda1">
 
 
               <div className="flex">
-                <a type="button" value="Left" name="" id="buttonleft" className="mx-1 bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">right</a>
-                <a type="button" value="Right" name="" id="buttonright" className="mx-1 bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">left</a>
-                <a type="button" value="Adicionar" name="" id="buttonadd" className="mx-8 bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">+</a>
+                <a type="button" value="Left" id="buttonleft" className="mx-1 bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">right</a>
+                <a type="button" value="Right" id="buttonright" className="mx-1 bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">left</a>
+                <a type="button" value="Adicionar" id="buttonadd" className="mx-8 bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">+</a>
                 <label className="pt-2 text-xl text-black" for="nome">cliente:</label>
-                <input type="text" value="" name="" id="" className="mx-4 bg-zinc-800 p-2 rounded-lg "></input>
+                <input type="text" value="" id="" className="mx-4 bg-zinc-800 p-2 rounded-lg "></input>
                 <label className="pt-2 text-xl text-black" for="nome">placa:</label>
-                <input type="text" value="" name="" id="" className="mx-4 bg-zinc-800 p-2 rounded-lg "></input>
+                <input type="text" value="" id="" className="mx-4 bg-zinc-800 p-2 rounded-lg "></input>
                 <label className="pt-2 text-xl text-black" for="nome">cod:</label>
-                <input type="text" value="" name="" id="" className="mx-4 bg-zinc-800 p-2 rounded-lg "></input>
+                <input type="text" value="" id="" className="mx-4 bg-zinc-800 p-2 rounded-lg "></input>
               </div>
 
 
@@ -123,15 +124,11 @@ export default function Form(){
                   <label className="text-xl text-black" for="method_payment">Metodo:</label>
                   <input type="text" name="method_payment" id="method_payment" placeholder="" autocomplete="off"
                     className="p-[10px] my-2 rounded-lg bg-black"></input>
-                    <input type="text" name="method_payment2" id="method_payment2" placeholder="" autocomplete="off"
-                    className="p-[10px] my-2 rounded-lg bg-black"></input>
                 </div>
 
                 <div id="Bandeira" className="m-1 flex flex-col col-span-1">
                   <label className="text-xl text-black" for="Bandeira">Bandeira:</label>
                   <input type="text" name="Bandeira" id="Bandeira" placeholder="" autocomplete="off"
-                    className="p-[10px] my-2 rounded-lg bg-black"></input>
-                  <input type="text" name="Bandeira2" id="Bandeira2" placeholder="" autocomplete="off"
                     className="p-[10px] my-2 rounded-lg bg-black"></input>
                 </div>
 
@@ -139,15 +136,11 @@ export default function Form(){
                   <label className="text-xl text-black" for="parcelas">Parcelas:</label>
                   <input type="text" name="parcelas" id="parcelas" placeholder="" autocomplete="off"
                     className="p-[10px] my-2 rounded-lg bg-black"></input>
-                  <input type="text" name="parcelas2" id="Bandeira2" placeholder="" autocomplete="off"
-                    className="p-[10px] my-2 rounded-lg bg-black"></input>
                 </div>
 
                 <div id="payment_value" className="m-1 flex flex-col col-span-1">
                   <label className="text-xl text-black" for="payment_value">Preco:</label>
                   <input type="text" name="payment_value" id="payment_value" placeholder="" autocomplete="off"
-                    className="p-[10px] my-2 rounded-lg bg-black"></input>
-                    <input type="text" name="payment_value2" id="payment_value2" placeholder="" autocomplete="off"
                     className="p-[10px] my-2 rounded-lg bg-black"></input>
                 </div>
               </div>
