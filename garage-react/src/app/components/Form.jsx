@@ -11,7 +11,7 @@ export default function Form(){
 
         <section className="justify-center align-center" id="formulario">
           <div className="justify-center items-center pt-[30px]">
-            <form className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white rounded-sm" id="borda1">
+            <form className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white" id="borda1">
 
 
               <div className="flex">
@@ -36,7 +36,7 @@ export default function Form(){
                 </div>
 
                 <div id="carro" className="m-1 flex flex-col">
-                  <label className="text-xl text-white text-white" for="carro">Modelo:</label>
+                  <label className="text-xl text-white" for="carro">Modelo:</label>
                   <input type="text" name="modelo" id="carro" placeholder="" autocomplete="off"
                     className="p-[10px] rounded-lg bg-white"></input>
                 </div>

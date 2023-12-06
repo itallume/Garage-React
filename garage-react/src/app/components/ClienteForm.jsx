@@ -1,8 +1,8 @@
 export default function ClienteForm(){
     return (<>
       <main className="flex h-screen">
-      <div className="x w-1/6"></div>
-        <section className="xxxx justify-center align-center" id="formulario">
+      <div className="corretor w-1/6"></div>
+        <section className="xxxx justify-center align-center flex items-center flex-col" id="formulario">
           <div className="justify-center items-center pt-[30px]">
             <form className="flex justify-center flex-col bg-gray-900 px-16 py-12 rounded-lg" id="borda1">
               <div className="flex">
