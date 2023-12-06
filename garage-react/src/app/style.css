@@ -63,22 +63,22 @@ a {
   }
 
 #borda1 {
-    box-shadow: 10px 5px rgba(21,107,29,255);
+    box-shadow: 10px 5px rgb(255,255,255);
     transition: all 0.5s ease-in-out
   }
 
 #borda1:hover {
-    box-shadow: 10px 5px rgba(21,107,29,255);
+    box-shadow: 10px 5px rgb(255,255,255);
     transition: all 0.25s ease-in-out
   }
 
 #borda {
-    box-shadow: 5px 5px rgba(21,107,29,255);
+    box-shadow: 5px 5px rgb(255,255,255);
     transition: all 0.5s ease-in-out
   }
 
 #borda:hover {
-    box-shadow: 5px 5px rgba(21,107,29,255);
+    box-shadow: 5px 5px rgb(255,255,255);
     transition: all 0.25s ease-in-out
   }
 
@@ -95,7 +95,7 @@ input, input:focus{
 body{
     margin: 0;
 
-    background: #201b2c;
+    background: #14213D;
 }
 
 .textfield{
