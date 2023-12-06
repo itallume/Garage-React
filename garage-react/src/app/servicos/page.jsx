@@ -1,5 +1,5 @@
-import Form from "../components/Form"
-import Sidebar from "../components/Sidebar"
+import Form from "../../../components/Form"
+import Sidebar from "../../../components/Sidebar"
 
 export default function Servicos(){
     return(

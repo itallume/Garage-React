@@ -3,8 +3,7 @@
 
 // import Image from 'next/image'
 import './style.css'
-import Sidebar from './components/Sidebar.jsx'
-import Form from './components/Form.jsx'
+import Form from '@/components/Form.jsx'
 
 import { useState } from 'react';
 
@@ -17,7 +16,7 @@ export default function Home(){
 
   return(
     <>
-      <Sidebar />
+  
       <Form />
     </>
   );
