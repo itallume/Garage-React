@@ -9,7 +9,7 @@ export default function Form(){
         <a className="material-symbols-outlined mt-12 cursor-pointer hover:text-[#00ff0059]" id="expandir">
         </a>
 
-        <section className=" justify-center align-center" id="formulario">
+        <section className="justify-center align-center" id="formulario">
           <div className="justify-center items-center pt-[30px]">
             <form className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white rounded-sm" id="borda1">
 
