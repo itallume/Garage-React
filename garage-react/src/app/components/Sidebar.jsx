@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { IoHome } from "react-icons/io5";
+// import { IoHome } from "react-icons/io5";
 
 export default function Sidebar(){
     return (<>
@@ -17,9 +17,9 @@ export default function Sidebar(){
         <section className="options mt-8">
 
           <div className="home">
-            <Link href="/"> <IoHome /> 
+            {/* <Link href="/"> <IoHome />  */}
               <p className="text-xs text-green-500 hover:text-white">Home</p>
-            </Link>
+            {/* </Link> */}
           </div>
 
           <div className="cadastrar_cliente"><Link href="/"><i className="far fa-edit text-xs text-green-500 hover:text-white"></i>
