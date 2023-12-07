@@ -22,13 +22,13 @@ export default function Sidebar(){
             {/* </Link> */}
           </div>
 
-          <div className="cadastrar_cliente"><Link href="/"><i className="far fa-edit text-xs text-green-500 hover:text-white"></i>
+          <div className="cadastrar_cliente"><Link href="/cliente"><i className="far fa-edit text-xs text-green-500 hover:text-white"></i>
               <p className="text-sm">Cliente</p></Link></div>
-          <div className="cadastrar_produto"><Link href="/"><i className="fas fa-car-battery text-xs text-green-500 hover:text-white"></i>
+          <div className="cadastrar_produto"><Link href="/mercadoria"><i className="fas fa-car-battery text-xs text-green-500 hover:text-white"></i>
               <p className="text-sm">Mercadorias</p></Link></div>
-          <div className="cadastrar_servico"><Link href="/"><i className="fas fa-cogs text-xs text-green-500 hover:text-white"></i>
+          <div className="cadastrar_servico"><Link href="/servicos"><i className="fas fa-cogs text-xs text-green-500 hover:text-white"></i>
               <p className="text-sm">Serviços</p></Link></div>
-          <div className="iniciar_venda"><Link href="/"><i className="fas fa-money-bill-alt text-xs text-green-500 hover:text-white"></i>
+          <div className="iniciar_venda"><Link href="/pedidos"><i className="fas fa-money-bill-alt text-xs text-green-500 hover:text-white"></i>
               <p className="text-sm">Pedidos</p></Link></div>
         </section>
 
