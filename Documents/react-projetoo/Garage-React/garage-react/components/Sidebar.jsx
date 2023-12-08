@@ -18,7 +18,6 @@ export default function Sidebar(){
 
           <div className="m-[30px] home"><Link href="/">
               <p className="text-xs text-green-500 transition hover:text-white duration-150">Home</p></Link></div>
-
           <div className="m-[30px] cadastrar_cliente transition hover:text-white duration-150"><Link href="/cliente"><i className="far fa-edit text-xs text-green-500 hover:text-white"></i>
               <p className="text-sm">Cliente</p></Link></div>
           <div className="m-[30px] cadastrar_produto transition hover:text-white duration-150"><Link href="/mercadoria"><i className="fas fa-car-battery text-xs text-green-500 hover:text-white"></i>

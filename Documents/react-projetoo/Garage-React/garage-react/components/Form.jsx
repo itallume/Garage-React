@@ -1,13 +1,14 @@
-export default function Form(){
-    return (<>
+export default function Form({ toggleVisibility }) {
+    return (
+      <>
       <main className="flex h-screen">
       <div className="x w-1/6"></div>
       <section className="w-4/5 flex justify-center items-center flex-col">
 
 
 
-        <a className="material-symbols-outlined mt-12 cursor-pointer hover:text-[#00ff0059]" id="expandir">
-        </a>
+        {/* <button className="text-white" onClick={toggleVisibility}>A
+        </button> */}
 
         <section className="justify-center align-center" id="formulario">
           <div className="justify-center items-center pt-[30px]">
@@ -15,8 +16,8 @@ export default function Form(){
 
 
               <div className="flex">
-                <a type="button" value="Left" id="buttonleft" className="mx-1 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">LEFT</a>
-                <a type="button" value="Right" id="buttonright" className="mx-1 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">RIGHT</a>
+                <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
+                <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">RIGHT</button>
                 
                 <label className="pt-2 text-xl text-white " for="nome">Cliente:</label>
                 <input type="text" value="" id="" className="mx-4 bg-white p-2 rounded-lg text-white"></input>
@@ -24,7 +25,7 @@ export default function Form(){
                 <input type="text" value="" id="" className="mx-4  p-2 rounded-lg "></input>
                 <label className="pt-2 text-xl text-white " for="nome">Cod:</label>
                 <input type="text" value="" id="" className="mx-4  p-2 rounded-lg "></input>
-                <a type="button" value="Adicionar" id="buttonadd" className="mx-8 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">+</a>
+                <button className="bg-[#00ff0059] mx-8 border-2 text-white p-2 rounded-lg hover:bg-green-500">+</button>
               </div>
 
 
@@ -148,13 +149,14 @@ export default function Form(){
 
               <div className="flex justify-center pt-[25px]">
             
-                <input type="button" value="Salvar" name="btn" id="button" className=" text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer"></input>
-                <input type="button" value="Fechar" name="btn" id="buttonf" className=" text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer"></input> 
+                <button className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Salvar</button>
+                <button onClick={toggleVisibility} className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Fechar</button> 
               </div>
             </form>
         </div>
       </section>
       </section>
       </main>
-    </>)
+      </>
+  );
 }

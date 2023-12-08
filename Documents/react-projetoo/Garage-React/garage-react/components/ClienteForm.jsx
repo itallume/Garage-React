@@ -1,4 +1,4 @@
-export default function ClienteForm(){
+export default function ClienteForm({toggleVisibility}){
     return (<>
       <main className="flex h-screen">
       <div className="w-1/6"></div>
@@ -11,15 +11,16 @@ export default function ClienteForm(){
             <form className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)] transition-all duration-[0.5s] ease-[ease-in-out] hover:shadow-[10px_5px_rgb(255,255,255)] hover:transition-all hover:duration-[0.25s] hover:ease-[ease-in-out]" id="borda1">
 
               <div className="flex">
-                <a type="button" value="Left" name="" id="buttonleft" className="mx-1 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">LEFT</a>
-                <a type="button" value="Right" name="" id="buttonright" className="mx-1 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">RIGHT</a>
-                <a type="button" value="Adicionar" name="" id="buttonadd" className="mx-8 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">+</a>
+                <button type="button" value="Left" className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
+                <button type="button" value="Right" className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">RIGHT</button>
+                
                 <label className="pt-2 text-xl text-white" for="nome">nome:</label>
                 <input type="text" value="" name="" id="" className="mx-4 p-2 rounded-lg "></input>
                 <label className="pt-2 text-xl text-white" for="nome">cpf:</label>
                 <input type="text" value="" name="" id="" className="mx-4 p-2 rounded-lg "></input>
                 <label className="pt-2 text-xl text-white" for="nome">cod:</label>
                 <input type="text" value="" name="" id="" className="mx-4 p-2 rounded-lg "></input>
+                <button type="button" className="bg-[#00ff0059] mx-8 border-2 text-white p-2 rounded-lg hover:bg-green-500">+</button>
               </div>
 
             <div className="grid grid-cols-5 gap-4">
@@ -72,9 +73,9 @@ export default function ClienteForm(){
               </div>
             </div>
             <div className="flex justify-center pt-6">
-              <input type="button" value="Salvar" name="btn" id="button" className="text-white bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer"></input>
-              <input type="button" value="Fechar" name="" id="buttonf" className="text-white bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer"></input>
-              <input type="button" value="Deletar" name="" id="button" className="text-white bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer"></input>
+              <button className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">Salvar</button>
+              <button className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500" onClick={toggleVisibility}>Fechar</button>
+              <button className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">Deletar</button>
             </div>
           </form>
           </div>
