@@ -13,7 +13,7 @@ export default function ClienteForm({toggleVisibility}){
               <div className="flex">
                 <button type="button" value="Left" className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
                 <button type="button" value="Right" className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">RIGHT</button>
-                
+                fer
                 <label className="pt-2 text-xl text-white" for="nome">nome:</label>
                 <input type="text" value="" name="" id="" className="mx-4 p-2 rounded-lg "></input>
                 <label className="pt-2 text-xl text-white" for="nome">cpf:</label>
