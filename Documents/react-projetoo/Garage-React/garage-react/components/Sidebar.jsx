@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Sidebar(){
     return (<>
-    <div className="m-[30px] corretor w-2/6"></div> 
+    <div className="corretor w-2/6"></div> 
     <section className="funcionario_infos_container w-52 bg-[#FCA311] border-r-2 border-[#FFF] fixed h-screen">
 
       <div className="m-[30px] my-16 flex justify-center items-center flex-col">
