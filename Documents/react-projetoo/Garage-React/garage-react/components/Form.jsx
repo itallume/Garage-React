@@ -15,8 +15,8 @@ export default function Form(){
 
 
               <div className="flex">
-                <a type="button" value="Left" id="buttonleft" className="mx-1 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">right</a>
-                <a type="button" value="Right" id="buttonright" className="mx-1 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">left</a>
+                <a type="button" value="Left" id="buttonleft" className="mx-1 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">LEFT</a>
+                <a type="button" value="Right" id="buttonright" className="mx-1 text-white p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">RIGHT</a>
                 
                 <label className="pt-2 text-xl text-white " for="nome">Cliente:</label>
                 <input type="text" value="" id="" className="mx-4 bg-white p-2 rounded-lg text-white"></input>
