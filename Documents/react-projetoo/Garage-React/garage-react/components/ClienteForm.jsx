@@ -1,10 +1,15 @@
 export default function ClienteForm(){
     return (<>
       <main className="flex h-screen">
-      <div className="x w-1/6"></div>
-        <section className=" justify-center align-center flex items-center flex-col" id="formulario">
-          <div className="justify-center items-center pt-[30px]">
-            <form className="flex justify-center flex-col bg-gray-900 px-16 py-12 rounded-lg" id="borda1">
+      <div className="w-1/6"></div>
+        <section className="w-4/5 flex justify-center items-center flex-col">
+          <section className="justify-center align-center" id="formulario">
+            <div className="justify-center items-center pt-[30px]">
+
+
+
+            <form className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)] transition-all duration-[0.5s] ease-[ease-in-out] hover:shadow-[10px_5px_rgb(255,255,255)] hover:transition-all hover:duration-[0.25s] hover:ease-[ease-in-out]" id="borda1">
+
               <div className="flex">
                 <a type="button" value="Left" name="" id="buttonleft" className="mx-1  p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">LEFT</a>
                 <a type="button" value="Right" name="" id="buttonright" className="mx-1  p-2 rounded-lg active:bg-[#00ff0059] hover:cursor-pointer">RIGHT</a>
@@ -81,10 +86,8 @@ export default function ClienteForm(){
               <div className="clientes w-[65vw] mt-8 p-4 md:w-[80vw]">
               </div>
           </a>
-        </section>
-    
-    
-    </main>
-
+          </section>
+          </section>
+      </main>
     </>)
 }
