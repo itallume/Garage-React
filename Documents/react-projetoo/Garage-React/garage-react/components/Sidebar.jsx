@@ -29,6 +29,8 @@ export default function Sidebar(){
         </section>
 
       </div>
+
     </section>
+
     </>)
 }

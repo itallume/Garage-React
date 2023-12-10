@@ -1,7 +1,12 @@
 'use client';
-import { useState } from 'react';
+
+
+import { useState, useEffect } from 'react';
 import './style.css'
 import Form from '@/components/Form';
+import { pedidos } from '@/data/seed.js'
+import PedidoCard from '@/components/PedidoCard';
+
 
 
 
@@ -9,9 +14,15 @@ export default function Home(){
     const [isVisible, setIsVisible] = useState(true);
 
 
+
     const toggleVisibility = () => {
       setIsVisible(!isVisible); 
   }
+
+
+
+
+
 
   return(
     <>
@@ -22,8 +33,15 @@ export default function Home(){
       </button>
 
 
-        {isVisible && <Form toggleVisibility={toggleVisibility} />}
+        {!isVisible && <Form toggleVisibility={toggleVisibility} />}
       </div>
+
+
+      {pedidos.map((pedido) => (
+        <PedidoCard key={pedido.id} {...pedido} />
+      ))}
+
+
     </>
   );
 }

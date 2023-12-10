@@ -22,7 +22,7 @@ export default function Home(){
       </button>
 
 
-        {isVisible && <ClienteForm toggleVisibility={toggleVisibility} />}
+        {!isVisible && <ClienteForm toggleVisibility={toggleVisibility} />}
       </div>
     </>
   );

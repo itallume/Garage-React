@@ -1,12 +1,12 @@
+import Link from 'next/link'
+
 export default function ClienteForm({toggleVisibility}){
     return (<>
-      <main className="flex h-screen">
+      <main className="flex h-screen overflow-x-none">        
       <div className="w-1/6"></div>
         <section className="w-4/5 flex justify-center items-center flex-col">
           <section className="justify-center align-center" id="formulario">
             <div className="justify-center items-center pt-[30px]">
-
-
 
             <form className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)] transition-all duration-[0.5s] ease-[ease-in-out] hover:shadow-[10px_5px_rgb(255,255,255)] hover:transition-all hover:duration-[0.25s] hover:ease-[ease-in-out]" id="borda1">
 
