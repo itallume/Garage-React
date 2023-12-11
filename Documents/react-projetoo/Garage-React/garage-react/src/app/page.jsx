@@ -11,12 +11,12 @@ import PedidoCard from '@/components/PedidoCard';
 
 
 export default function Home(){
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(true); // useState(false) para esconder o formulário
 
 
 
     const toggleVisibility = () => {
-      setIsVisible(!isVisible); 
+      setIsVisible(!isVisible); // inverte o valor de isVisible
   }
 
 
@@ -29,7 +29,7 @@ export default function Home(){
     <div className="flex items-center justify-center">
       <button onClick={toggleVisibility}
         className="mt-8 text-white rounded border border-blue-600 bg-[#00ff0059] p-2">
-        EDIT
+        +
       </button>
 
 

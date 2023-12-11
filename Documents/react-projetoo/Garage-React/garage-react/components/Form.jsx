@@ -189,7 +189,6 @@ export default function Form({ toggleVisibility }) {
                 </div>
                 <div id="cod" className="m-1 flex flex-col">
                   <label className="text-xl text-white">codigo: {formData.cod}</label>
-                  
             
                 </div>
                 <div id="obs" className="m-1 flex flex-col col-span-10">
