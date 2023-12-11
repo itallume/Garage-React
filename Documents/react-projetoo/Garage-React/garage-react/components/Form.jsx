@@ -29,7 +29,7 @@ export default function Form({ toggleVisibility }) {
   });
 
 
-  const [pedidos, setPedidos] = useState(ped);
+  const [pedidos] = useState(ped);
 
   useEffect(() => {
     updatePagamentoValor();
@@ -44,7 +44,8 @@ export default function Form({ toggleVisibility }) {
     // Atualize o estado apenas para pagamentoValor
     setFormData((prevData) => ({
       ...prevData,
-      pagamentoValor: pagamentoValor.toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
+      pagamentoValor: pagamentoValor.toFixed(2),
+       // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
     }));
   };
 
@@ -56,10 +57,37 @@ export default function Form({ toggleVisibility }) {
     const newPedido = {
       ...formData,
       cod: pedidos.length + 1,
-      pagamentoValor: (parseFloat(formData.preco || 0) + parseFloat(formData.preco2 || 0)).toFixed(2)
+      pagamentoValor: (parseFloat(formData.preco || 0) + parseFloat(formData.preco2 || 0)).toFixed(2),
+      preco: parseFloat(formData.preco || 0).toFixed(2),
+      preco2: parseFloat(formData.preco2 || 0).toFixed(2),
     };    
-    setPedidos((prevPedidos) => [...prevPedidos, newPedido]);
-    };
+
+
+    pedidos.push(newPedido);
+
+    setFormData({
+      cliente: '',
+      cod: '',
+      placa: '',
+      modelo: '',
+      km: '',
+      vendedor: '',
+      nf: '',
+      data: '',
+      codigo: '',
+      obs: '',
+      mercadoria: '',
+      qnt: '',
+      preco: '',
+      mecanico: '',
+      desconto: '',
+      preco2: '',
+      metodoPagamento: '',
+      bandeira: '',
+      parcelas: '',
+      pagamentoValor: '',
+    });
+  };
 
     
     const handleChange = (e) => {
@@ -83,7 +111,7 @@ export default function Form({ toggleVisibility }) {
             <form onSubmit={handleSubmit} className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)] transition-all duration-[0.5s] ease-[ease-in-out] hover:shadow-[10px_5px_rgb(255,255,255)] hover:transition-all hover:duration-[0.25s] hover:ease-[ease-in-out]" id="borda1">
 
 
-              <div className="flex BarradePesquisa">
+              <div className="flex BarradePesquisa mb-8">
                 <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
                 <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">RIGHT</button>
                 
@@ -158,34 +186,20 @@ export default function Form({ toggleVisibility }) {
                     </input>
                 </div>
 
-                <div id="mercadoria" className="m-1 flex flex-col col-span-7">
+                <div id="mercadoria" className="m-1 flex flex-col col-span-6">
                   <label className="text-xl text-white">Mercadoria:</label>
-
                   <input type="text" name="mercadoria" id="mercadoria" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.mercadoria}
                     onChange={handleChange}>
                   </input>
-
-                  <input type="text" name="mercadoria2" id="mercadoria2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
-                    value={formData.mercadoria2}
-                    onChange={handleChange}>
-                  </input>
-
                 </div>
 
                 <div id="qnt" className="m-1 flex flex-col col-span-1">
                   <label className="text-xl text-white">qnt:</label>
-
                   <input type="text" name="qnt" id="qnt" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.qnt}
                     onChange={handleChange}>
                   </input>
-
-                  <input type="text" name="qnt2" id="qnt2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
-                    value={formData.qnt2}
-                    onChange={handleChange}>
-                  </input>
-
 
                 </div>
 
@@ -195,10 +209,6 @@ export default function Form({ toggleVisibility }) {
                     value={formData.preco}
                     onChange={handleChange}>
                     </input>
-                  <input type="text" name="preco2" id="preco2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
-                    value={formData.preco2}
-                    onChange={handleChange}>
-                  </input>
                 </div>
 
                 <div id="mecanico" className="m-1 flex flex-col col-span-1">
@@ -207,6 +217,35 @@ export default function Form({ toggleVisibility }) {
                     value={formData.mecanico}
                     onChange={handleChange}>
                     </input>
+                </div>
+
+
+
+                <div id="mercadoria2" className="mx-1 flex flex-col col-span-6">
+                  <input type="text" name="mercadoria2" id="mercadoria2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
+                    value={formData.mercadoria2}
+                    onChange={handleChange}>
+                    </input>
+                </div>
+
+
+
+                <div id="qnt2" className="mx-1 flex flex-col col-span-1">
+                <input type="text" name="qnt2" id="qnt2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
+                    value={formData.qnt2}
+                    onChange={handleChange}>
+                  </input>
+                </div>
+
+
+                <div id="preco2" className="mx-1 flex flex-col col-span-1">
+                <input type="text" name="preco2" id="preco2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
+                    value={formData.preco2}
+                    onChange={handleChange}>
+                </input>
+                </div>
+
+                <div id="mecanico2" className="mx-1 flex flex-col col-span-1">
                   <input type="text" name="mecanico2" id="mecanico2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.mecanico2}
                     onChange={handleChange}>
@@ -214,9 +253,11 @@ export default function Form({ toggleVisibility }) {
                 </div>
 
 
+
+
                 <div className="col-span-7"></div>
 
-                <div id="desconto" className="m-1 flex flex-col col-span-1">
+                <div id="desconto" className="mx-1 flex flex-col col-span-1">
                   <label className="text-xl text-white">desconto:</label>
                   <input type="text" name="desconto" id="desconto" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.desconto}
@@ -224,16 +265,13 @@ export default function Form({ toggleVisibility }) {
                     </input>
                 </div>
 
-                <div id="pagamentoValor" className="m-1 flex flex-col col-span-2">
+                <div id="pagamentoValor" className="mx-1 flex flex-col col-span-2">
                   <label className="text-xl text-white">Preco:</label>
-                    <input className="text-white p-[10px] my-2 rounded-lg"
-                    value={formData.pagamentoValor}
-                    onChange={handleChange}>
-                    </input>  
+                    <h1 className="text-white p-[10px] my-2 rounded-lg">{formData.pagamentoValor}</h1>  
                 </div>
 
 
-                <div id="metodoPagamento" className="m-1 flex flex-col col-span-1">
+                <div id="metodoPagamento" className="mx-1 flex flex-col col-span-1">
                   <label className="text-xl text-white">Metodo:</label>
                   <input type="text" name="metodoPagamento" id="metodoPagamento" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.metodoPagamento}
@@ -259,10 +297,7 @@ export default function Form({ toggleVisibility }) {
 
                 <div id="pagamentoValor" className="m-1 flex flex-col col-span-1">
                   <label className="text-xl text-white">Preco:</label>
-                  <input className="text-white p-[10px] my-2 rounded-lg"
-                    value={formData.pagamentoValor}
-                    onChange={handleChange}>
-                    </input>  
+                  <h1 className="text-white p-[10px] my-2 rounded-lg">{formData.pagamentoValor}</h1>  
                 </div>
               </div>
 
