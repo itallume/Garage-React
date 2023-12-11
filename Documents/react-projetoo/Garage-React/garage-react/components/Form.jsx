@@ -26,24 +26,34 @@ export default function Form({ toggleVisibility }) {
     bandeira: '',
     parcelas: '',
     pagamentoValor: '',
+    valorTotal1: '',
+    valorTotal2: '',
   });
 
 
   const [pedidos] = useState(ped); // Estado inicial dos pedidos
 
-  useEffect(() => { // Atualize o pagamentoValor sempre que o preço ou o preço2 mudar
-    updatePagamentoValor();
-  }, [formData.preco, formData.preco2]);  // Dependências do efeito
-  
+  useEffect(() => { // Atualize o pagamentoValor sempre que os valores mudarem
+    updateValores();
+  }, [formData.preco, formData.preco2, formData.qnt, formData.qnt2, formData.valorTotal1, formData.valorTotal2]);  // Dependências do efeito É POSSIVEL ADICIONAR + DE DUAS DEPENDECIAS????
 
-  const updatePagamentoValor = () => {
+  const updateValores = () => {
     // Cálculo do pagamentoValor
-    const pagamentoValor =
-      parseFloat(formData.preco || 0) + parseFloat(formData.preco2 || 0);
 
+    const valorTotal1 = 
+    parseFloat(formData.preco * formData.qnt || 0)
+
+    const valorTotal2 =
+    parseFloat(formData.preco2 * formData.qnt2 || 0)
+
+    const pagamentoValor =
+      parseFloat(formData.valorTotal1 || 0) + parseFloat(formData.valorTotal2 || 0);
+    
     // Atualize o estado apenas para pagamentoValor
     setFormData((prevData) => ({
       ...prevData,
+      valorTotal1: valorTotal1.toFixed(2),
+      valorTotal2: valorTotal2.toFixed(2),
       pagamentoValor: pagamentoValor.toFixed(2),
        // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
     }));
@@ -57,9 +67,11 @@ export default function Form({ toggleVisibility }) {
     const newPedido = {
       ...formData,
       cod: pedidos.length + 1,
-      pagamentoValor: (parseFloat(formData.preco || 0) + parseFloat(formData.preco2 || 0)).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
       preco: parseFloat(formData.preco || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
       preco2: parseFloat(formData.preco2 || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
+      valorTotal1: parseFloat(formData.preco * formData.qnt || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
+      valorTotal2: parseFloat(formData.preco2 * formData.qnt2 || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
+      pagamentoValor: (parseFloat(formData.valorTotal1 || 0) + parseFloat(formData.valorTotal2 || 0)).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
     };    
 
 
@@ -86,6 +98,8 @@ export default function Form({ toggleVisibility }) {
       bandeira: '',
       parcelas: '',
       pagamentoValor: '',
+      valorTotal1: '',
+      valorTotal2: '',  
     });
   };
 
@@ -96,7 +110,7 @@ export default function Form({ toggleVisibility }) {
         ...prevData, // Mantenha os valores anteriores
         [name]: value, // Atualize o valor do campo de entrada
       }));
-      updatePagamentoValor(); // Atualize o pagamentoValor
+      updateValores(); // Atualize o pagamentoValor
     };
 
 
@@ -211,6 +225,16 @@ export default function Form({ toggleVisibility }) {
                     </input>
                 </div>
 
+                <div id="valorTotal1" className="m-1 flex flex-col col-span-1">
+                  <label className="text-xl text-white">Total:</label>
+                  <input type="text" name="valorTotal1" id="valorTotal1" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
+                    value={formData.valorTotal1}
+                    onChange={handleChange}>
+                    </input>
+                </div>
+
+
+
                 <div id="mecanico" className="m-1 flex flex-col col-span-1">
                   <label className="text-xl text-white">mecanico:</label>
                   <input type="text" name="mecanico" id="mecanico" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
@@ -245,6 +269,14 @@ export default function Form({ toggleVisibility }) {
                 </input>
                 </div>
 
+                <div id="valorTotal2" className="mx-1 flex flex-col col-span-1">
+                  <input type="text" name="valorTotal2" id="valorTotal2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
+                    value={formData.valorTotal2}
+                    onChange={handleChange}>
+                    </input>
+                </div>
+
+
                 <div id="mecanico2" className="mx-1 flex flex-col col-span-1">
                   <input type="text" name="mecanico2" id="mecanico2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.mecanico2}
@@ -271,7 +303,7 @@ export default function Form({ toggleVisibility }) {
                 </div>
 
 
-                <div id="metodoPagamento" className="mx-1 flex flex-col col-span-1">
+                <div id="metodoPagamento" className="m-1 flex flex-col col-span-1">
                   <label className="text-xl text-white">Metodo:</label>
                   <input type="text" name="metodoPagamento" id="metodoPagamento" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.metodoPagamento}

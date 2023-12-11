@@ -22,7 +22,9 @@ export const pedidos = [
       metodoPagamento: 'Cartão de Crédito',
       bandeira: 'MasterCard',
       parcelas: '3',
-      pagamentoValor: '270.00'
+      pagamentoValor: '270.00',
+      valorTotal1: '90.00',
+      valorTotal2: '0.00' 
     },
     {
       cliente: 'Cliente 2',
@@ -47,7 +49,9 @@ export const pedidos = [
       metodoPagamento: 'Dinheiro',
       bandeira: '',
       parcelas: '',
-      pagamentoValor: ''
+      pagamentoValor: '',
+      valorTotal1: '10,00',
+      valorTotal2: '10,00'
     },
     {
       cliente: 'Cliente 3',
@@ -72,7 +76,9 @@ export const pedidos = [
       metodoPagamento: 'Cartão de Débito',
       bandeira: 'Visa',
       parcelas: '',
-      pagamentoValor: ''
+      pagamentoValor: '',
+      valorTotal1: '10,00',
+      valorTotal2: '10,00'
     },
     {
       cliente: 'Cliente 4',
@@ -98,6 +104,8 @@ export const pedidos = [
       metodoPagamento: 'Boleto',
       bandeira: '',
       parcelas: '1',
-      pagamentoValor: '180.00'
+      pagamentoValor: '180.00',
+      valorTotal1: '10,00',
+      valorTotal2: '10,00'
     },
   ];
