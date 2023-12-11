@@ -3,7 +3,7 @@ import { pedidos as ped } from '@/data/seed';
 
 
 export default function Form({ toggleVisibility }) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({ // Estado inicial do formulário
     cliente: '',
     cod: '',
     placa: '',
@@ -29,11 +29,11 @@ export default function Form({ toggleVisibility }) {
   });
 
 
-  const [pedidos] = useState(ped);
+  const [pedidos] = useState(ped); // Estado inicial dos pedidos
 
-  useEffect(() => {
+  useEffect(() => { // Atualize o pagamentoValor sempre que o preço ou o preço2 mudar
     updatePagamentoValor();
-  }, [formData.preco, formData.preco2]); 
+  }, [formData.preco, formData.preco2]);  // Dependências do efeito
   
 
   const updatePagamentoValor = () => {
@@ -51,21 +51,21 @@ export default function Form({ toggleVisibility }) {
 
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (e) => { // Manipulador de envio do formulário
+    e.preventDefault(); // Evite que o formulário seja enviado
 
     const newPedido = {
       ...formData,
       cod: pedidos.length + 1,
-      pagamentoValor: (parseFloat(formData.preco || 0) + parseFloat(formData.preco2 || 0)).toFixed(2),
-      preco: parseFloat(formData.preco || 0).toFixed(2),
-      preco2: parseFloat(formData.preco2 || 0).toFixed(2),
+      pagamentoValor: (parseFloat(formData.preco || 0) + parseFloat(formData.preco2 || 0)).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
+      preco: parseFloat(formData.preco || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
+      preco2: parseFloat(formData.preco2 || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
     };    
 
 
-    pedidos.push(newPedido);
+    pedidos.push(newPedido); // Adicione o novo pedido ao array de pedidos
 
-    setFormData({
+    setFormData({ // Limpe o formulário
       cliente: '',
       cod: '',
       placa: '',
@@ -90,13 +90,13 @@ export default function Form({ toggleVisibility }) {
   };
 
     
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
+    const handleChange = (e) => { // Manipulador de alteração de formulário
+      const { name, value } = e.target; // Extraia o nome e o valor do alvo
+      setFormData((prevData) => ({ // Atualize o estado com o novo valor
+        ...prevData, // Mantenha os valores anteriores
+        [name]: value, // Atualize o valor do campo de entrada
       }));
-      updatePagamentoValor();
+      updatePagamentoValor(); // Atualize o pagamentoValor
     };
 
 
