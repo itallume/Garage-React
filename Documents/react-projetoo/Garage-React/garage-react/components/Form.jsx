@@ -49,7 +49,7 @@ export default function Form({ toggleVisibility }) {
     const pagamentoValor =
       parseFloat(formData.valorTotal1 || 0) + parseFloat(formData.valorTotal2 || 0);
     
-    // Atualize o estado apenas para pagamentoValor
+    // Atualize o estado com os novos valores
     setFormData((prevData) => ({
       ...prevData,
       valorTotal1: valorTotal1.toFixed(2),
@@ -335,7 +335,7 @@ export default function Form({ toggleVisibility }) {
 
               <div className="flex justify-center pt-[25px]">
             
-                <button type="submit" className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Salvar</button>
+                <button className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Salvar</button>
                 <button onClick={toggleVisibility} className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Fechar</button> 
               </div>
             </form>
