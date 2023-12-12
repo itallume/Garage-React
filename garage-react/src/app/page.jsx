@@ -6,12 +6,13 @@ import './style.css'
 import Form from '@/components/Form';
 import { pedidos } from '@/data/seed.js'
 import PedidoCard from '@/components/PedidoCard';
+import { IoAdd} from "react-icons/io5";
 
 
 
 
 export default function Home(){
-    const [isVisible, setIsVisible] = useState(true); // useState(false) para esconder o formulário
+    const [isVisible, setIsVisible] = useState(false); // useState(false) para esconder o formulário
 
 
 
@@ -19,27 +20,22 @@ export default function Home(){
       setIsVisible(!isVisible); // inverte o valor de isVisible
   }
 
-
-
-
-
-
   return(
     <>
     <div className="flex items-center justify-center">
       <button onClick={toggleVisibility}
         className="mt-8 text-white rounded border border-blue-600 bg-[#00ff0059] p-2">
-        +
+        <IoAdd />
       </button>
 
 
-        {!isVisible && <Form toggleVisibility={toggleVisibility} />}
-      </div>
+      {isVisible && <Form toggleVisibility={toggleVisibility} />}
+    </div>
 
 
-      {pedidos.map((pedido) => (
-        <PedidoCard key={pedido.id} {...pedido} />
-      ))}
+    {pedidos.map((pedido) => (
+        <PedidoCard {...pedido} key={pedido.cod}/>
+    ))}
 
 
     </>

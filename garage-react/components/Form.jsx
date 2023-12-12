@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { pedidos as ped } from '@/data/seed';
+import { IoCaretBackOutline, IoCaretForwardSharp, IoAdd } from "react-icons/io5";
 
 
 export default function Form({ toggleVisibility }) {
@@ -126,8 +127,8 @@ export default function Form({ toggleVisibility }) {
 
 
               <div className="flex BarradePesquisa mb-8">
-                <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
-                <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">RIGHT</button>
+                <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500"><IoCaretBackOutline className="text-2xl"/></button>
+                <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500"><IoCaretForwardSharp className="text-2xl"/></button>
                 
                 <label className="pt-2 text-xl text-white ">Cliente:</label>
                 <input type="text" className="mx-4 p-2 rounded-lg" onChange={handleChange}></input>
@@ -135,7 +136,7 @@ export default function Form({ toggleVisibility }) {
                 <input type="text" className="mx-4 p-2 rounded-lg" onChange={handleChange}></input>
                 <label className="pt-2 text-xl text-white">Cod:</label>
                 <input type="text" className="mx-4 p-2 rounded-lg" onChange={handleChange}></input>
-                <button className="bg-[#00ff0059] mx-8 border-2 text-white p-2 rounded-lg hover:bg-green-500">+</button>
+                <button className="bg-[#00ff0059] mx-8 border-2 text-white p-2 rounded-lg hover:bg-green-500"><IoAdd className="text-2xl"/></button>
               </div>
 
 

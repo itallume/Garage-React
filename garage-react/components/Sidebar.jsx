@@ -1,5 +1,5 @@
 import Link from 'next/link'
-// import { IoHome } from "react-icons/io5";
+import { IoHome, IoPencil, IoReader } from "react-icons/io5";
 
 export default function Sidebar(){
     return (<>
@@ -16,16 +16,17 @@ export default function Sidebar(){
 
         <section className="options mt-8 text-center gap-5">
 
-          <div className="m-[30px] home"><Link href="/">
-              <p className="text-xs text-green-500 transition hover:text-white duration-150">Home</p></Link></div>
-          <div className="m-[30px] cadastrar_cliente transition hover:text-white duration-150"><Link href="/cliente"><i className="far fa-edit text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Cliente</p></Link></div>
-          <div className="m-[30px] cadastrar_produto transition hover:text-white duration-150"><Link href="/mercadoria"><i className="fas fa-car-battery text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Mercadorias</p></Link></div>
-          <div className="m-[30px] cadastrar_servico transition hover:text-white duration-150"><Link href="/servicos"><i className="fas fa-cogs text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Serviços</p></Link></div>
-          <div className="m-[30px] iniciar_venda transition hover:text-white duration-150"><Link href="/pedidos"><i className="fas fa-money-bill-alt text-xs text-green-500 hover:text-white"></i>
-              <p className="text-sm">Pedidos</p></Link></div>
+          <div className="m-[30px] text-base text-white transition hover:text-black duration-150"><Link href="/">
+              <p>Home</p><IoHome className="text-3xl"/></Link>
+          </div>
+          
+          <div className="m-[30px] text-base text-white transition hover:text-black duration-150"><Link href="/Cadastro">
+              <p>Cadastro</p><IoPencil className="text-3xl"/></Link>
+          </div>
+
+          <div className="m-[30px] text-base text-white transition hover:text-black duration-150"><Link href="/mercadoria"><i className="fas fa-car-battery text-xs text-green-500 hover:text-white"></i>
+              <p>Consultas</p><IoReader className="text-3xl"/></Link>
+          </div>
         </section>
 
       </div>

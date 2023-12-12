@@ -4,7 +4,7 @@ export default function PedidoCard({
   placa,
   modelo,
   km,
-  cliente,
+  cliente
 }) {
   return (
     <div className="flex"> 

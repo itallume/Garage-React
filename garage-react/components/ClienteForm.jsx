@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function ClienteForm({toggleVisibility}){
+export default function ClienteForm(){
     return (<>
       <main className="flex h-screen overflow-x-none">        
       <div className="w-1/6"></div>
@@ -74,7 +74,6 @@ export default function ClienteForm({toggleVisibility}){
             </div>
             <div className="flex justify-center pt-6">
               <button className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">Salvar</button>
-              <button className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500" onClick={toggleVisibility}>Fechar</button>
               <button className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">Deletar</button>
             </div>
           </form>
