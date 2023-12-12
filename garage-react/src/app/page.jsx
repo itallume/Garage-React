@@ -1,25 +1,47 @@
 'use client';
 
 
-// import Image from 'next/image'
+import { useState, useEffect } from 'react';
 import './style.css'
-import Sidebar from './components/Sidebar.jsx'
-import Form from './components/Form.jsx'
+import Form from '@/components/Form';
+import { pedidos } from '@/data/seed.js'
+import PedidoCard from '@/components/PedidoCard';
 
-import { useState } from 'react';
 
-// import { pedidos } from '@/data/pedidos';
 
 
 export default function Home(){
-  const [isShowForm, setIsShowForm] = useState(true);
+    const [isVisible, setIsVisible] = useState(true); // useState(false) para esconder o formulário
+
+
+
+    const toggleVisibility = () => {
+      setIsVisible(!isVisible); // inverte o valor de isVisible
+  }
+
+
+
+
 
 
   return(
     <>
-      <Sidebar />
-      <Form />
+    <div className="flex items-center justify-center">
+      <button onClick={toggleVisibility}
+        className="mt-8 text-white rounded border border-blue-600 bg-[#00ff0059] p-2">
+        +
+      </button>
+
+
+        {!isVisible && <Form toggleVisibility={toggleVisibility} />}
+      </div>
+
+
+      {pedidos.map((pedido) => (
+        <PedidoCard key={pedido.id} {...pedido} />
+      ))}
+
+
     </>
   );
 }
-
