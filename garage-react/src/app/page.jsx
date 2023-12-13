@@ -7,6 +7,7 @@ import Form from '@/components/Form';
 import { pedidos } from '@/data/seed.js'
 import PedidoCard from '@/components/PedidoCard';
 import { IoAdd} from "react-icons/io5";
+import{loadServico} from "@/src/lib/teste.js"
 
 
 
@@ -14,7 +15,7 @@ import { IoAdd} from "react-icons/io5";
 export default function Home(){
     const [isVisible, setIsVisible] = useState(false); // useState(false) para esconder o formulário
 
-
+    const handleClick = () => {loadServico(), toggleVisibility()}
 
     const toggleVisibility = () => {
       setIsVisible(!isVisible); // inverte o valor de isVisible
@@ -23,7 +24,7 @@ export default function Home(){
   return(
     <>
     <div className="flex items-center justify-center">
-      <button onClick={toggleVisibility}
+      <button onClick  ={handleClick}
         className="mt-8 text-white rounded border border-blue-600 bg-[#00ff0059] p-2">
         <IoAdd />
       </button>
