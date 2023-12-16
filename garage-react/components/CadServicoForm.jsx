@@ -1,10 +1,10 @@
 export default function CadServicoForm(){
+  
     return (<>
     <section>
   <div className="items-center pt-[30px]">
     <form
-      className="flex justify-center bg-[#574F73] px-24 py-12 rounded-lg"
-      id="borda1"
+      className="flex justify-center bg-gray-900 px-24 py-12 rounded-lg"
     >
       {/* Conteúdo do retângulo */}
       <div className="">
@@ -13,7 +13,7 @@ export default function CadServicoForm(){
             id="NomeProduto"
             className="m-1 flex flex-col mr-[15px] mb-[15px]"
           >
-            <label className="text-xl text-black" htmlFor="nomeProduto">
+            <label className="text-xl text-white" htmlFor="nomeProduto">
               Nome do Produto:
             </label>
             <input
@@ -22,14 +22,14 @@ export default function CadServicoForm(){
               id="nomeProduto"
               placeholder=""
               autoComplete="off"
-              className="p-[10px] rounded-lg bg-black"
+              className="p-[10px] rounded-lg bg-white"
             />
           </div>
           <div
             id="fabricante"
             className="m-1 flex flex-col mr-[15px] mb-[15px]"
           >
-            <label className="text-xl text-black" htmlFor="fabricante">
+            <label className="text-xl text-white" htmlFor="fabricante">
               Fabricante:
             </label>
             <input
@@ -38,20 +38,20 @@ export default function CadServicoForm(){
               id="fabricante"
               placeholder=""
               autoComplete="off"
-              className="p-[10px] rounded-lg bg-black"
+              className="p-[10px] rounded-lg bg-white"
             />
           </div>
           <div
             id="Fornecedor"
             className="m-1 flex flex-col mr-[15px] mb-[15px]"
           >
-            <label htmlFor="Fornecedor" className="text-xl text-black">
+            <label htmlFor="Fornecedor" className="text-xl text-white">
               Fornecedor:
             </label>
             <select
               name="Fornecedor"
               id="Fornecedor"
-              className="p-[10px] rounded-lg bg-black"
+              className="p-[10px] rounded-lg bg-white"
             >
               <option value="Master_Auto_Parts">Master Auto Parts</option>
               <option value="CarroPeças_Brasil">CarroPeças Brasil</option>
@@ -65,7 +65,7 @@ export default function CadServicoForm(){
             id="valorProduto"
             className="m-1 flex flex-col mr-[15px] mb-[15px]"
           >
-            <label className="text-xl text-black" htmlFor="valorProduto">
+            <label className="text-xl text-white" htmlFor="valorProduto">
               Valor de custo:
             </label>
             <input
@@ -74,7 +74,7 @@ export default function CadServicoForm(){
               id="valorProduto"
               placeholder=""
               autoComplete="off"
-              className="p-[10px] rounded-lg bg-black"
+              className="p-[10px] rounded-lg bg-white"
             />
           </div>
           <div
@@ -82,7 +82,7 @@ export default function CadServicoForm(){
             className="m-1 flex flex-col mr-[15px] mb-[15px]"
           >
             <label
-              className="text-xl text-black"
+              className="text-xl text-white"
               htmlFor="porcentagem_lucroProduto"
             >
               Porcentagem de lucro:
@@ -93,11 +93,11 @@ export default function CadServicoForm(){
               id="porcentagem_lucroProduto"
               placeholder=""
               autoComplete="off"
-              className="p-[10px] rounded-lg bg-black"
+              className="p-[10px] rounded-lg bg-white"
             />
           </div>
           <div id="IdProtudo" className="m-1 flex flex-col mr-[15px] mb-[15px]">
-            <label className="text-xl text-black" htmlFor="IdProduto">
+            <label className="text-xl text-white" htmlFor="IdProduto">
               Código do Produto:
             </label>
             <input
@@ -108,7 +108,7 @@ export default function CadServicoForm(){
               id="IdProduto"
               placeholder=""
               autoComplete="off"
-              className="p-[10px] rounded-lg bg-black"
+              className="p-[10px] rounded-lg bg-white"
             />
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function CadServicoForm(){
           id="DescricaoProduto"
           className="m-1 flex flex-col mr-[15px] mb-[15px]"
         >
-          <label className="text-xl text-black" htmlFor="DescricaoProduto">
+          <label className="text-xl text-white" htmlFor="DescricaoProduto">
             Descriçao do Produto:
           </label>
           <textarea
@@ -125,7 +125,7 @@ export default function CadServicoForm(){
             id="DescricaoProduto"
             placeholder=""
             autoComplete="off"
-            className="p-[10px] rounded-lg bg-black "
+            className="p-[10px] rounded-lg bg-white "
             rows={3}
             defaultValue={"             \n                "}
           />
@@ -136,7 +136,8 @@ export default function CadServicoForm(){
             defaultValue="Salvar"
             name="btn"
             id="button"
-            className="bg-zinc-800 p-2 rounded-lg active:bg-[#00ff0059]"
+            className="bg-white p-2 rounded-lg active:bg-[#00ff0059]"
+            onSubmit={createServico()}
           />
         </div>
       </div>

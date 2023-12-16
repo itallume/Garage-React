@@ -1,11 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 
-const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY;
-const API_URL = process.env.NEXT_PUBLIC_SUPABASE_API_URL;
+const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtd3RkZXRmdnpxanVqb29rb2xqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg4NjUzNzksImV4cCI6MjAxNDQ0MTM3OX0.4XciDONXTVqJmICrJ7TX85tR_h53Qh3X1bM5EWvcKlE"
+const API_URL = "https://cmwtdetfvzqjujookolj.supabase.co";
 
 const supabase = createClient(API_URL, API_KEY);
 
-async function create(resource, data) {
+export async function create(resource, data) {
   const { data: createdData, error } = await supabase
     .from(resource)
     .insert(data)
@@ -18,7 +18,7 @@ async function create(resource, data) {
   return createdData?.[0];
 }
 
-async function read(resource, id) {
+export async function read(resource, id) {
   const { data, error } = id
     ? await supabase.from(resource).select('*').eq('id', id)
     : await supabase.from(resource).select('*');
@@ -30,7 +30,7 @@ async function read(resource, id) {
   return data;
 }
 
-async function update(resource, data) {
+export async function update(resource, data) {
   const { data: updatedData, error } = await supabase
     .from(resource)
     .update(data)
@@ -44,7 +44,7 @@ async function update(resource, data) {
   return updatedData?.[0];
 }
 
-async function remove(resource, id) {
+export async function remove(resource, id) {
   const { error } = await supabase.from(resource).delete().eq('id', id);
 
   if (error) {
@@ -53,5 +53,3 @@ async function remove(resource, id) {
     return true;
   }
 }
-
-export default { create, read, update, remove };
