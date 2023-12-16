@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { pedidos as ped } from '@/data/seed';
-import { IoCaretBackOutline, IoCaretForwardSharp, IoAdd } from "react-icons/io5";
 
 
 export default function Form({ toggleVisibility }) {
@@ -33,9 +32,19 @@ export default function Form({ toggleVisibility }) {
 
 
   const [pedidos] = useState(ped); // Estado inicial dos pedidos
+  let cod = pedidos.length+1
+
+  const leftclick = () => {
+    cod = pedidos.length-1
+  }
+
+  const rightclick = () => {
+    cod = pedidos.length+1
+  }
 
   useEffect(() => { // Atualize o pagamentoValor sempre que os valores mudarem
     updateValores();
+    setCurrentDate(); // devia estar em outro useEFfect
   }, [formData.preco, formData.preco2, formData.qnt, formData.qnt2, formData.valorTotal1, formData.valorTotal2]);  // Dependências do efeito É POSSIVEL ADICIONAR + DE DUAS DEPENDECIAS????
 
   const updateValores = () => {
@@ -49,7 +58,9 @@ export default function Form({ toggleVisibility }) {
 
     const pagamentoValor =
       parseFloat(formData.valorTotal1 || 0) + parseFloat(formData.valorTotal2 || 0);
+
     
+
     // Atualize o estado com os novos valores
     setFormData((prevData) => ({
       ...prevData,
@@ -61,12 +72,25 @@ export default function Form({ toggleVisibility }) {
   };
 
 
+  const setCurrentDate = () => {
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+    
+    
+    setFormData((prevData) => ({
+      ...prevData,
+      data: formattedDate,
+    }));
+    return formattedDate
+  };
+
 
   const handleSubmit = (e) => { // Manipulador de envio do formulário
     e.preventDefault(); // Evite que o formulário seja enviado
 
     const newPedido = {
       ...formData,
+      data: setCurrentDate(),
       cod: pedidos.length + 1,
       preco: parseFloat(formData.preco || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
       preco2: parseFloat(formData.preco2 || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
@@ -87,12 +111,14 @@ export default function Form({ toggleVisibility }) {
       vendedor: '',
       nf: '',
       data: '',
-      codigo: '',
       obs: '',
       mercadoria: '',
+      mercadoria2: '',
       qnt: '',
+      qnt2: '',
       preco: '',
       mecanico: '',
+      mecanico2: '',
       desconto: '',
       preco2: '',
       metodoPagamento: '',
@@ -100,9 +126,15 @@ export default function Form({ toggleVisibility }) {
       parcelas: '',
       pagamentoValor: '',
       valorTotal1: '',
-      valorTotal2: '',  
+      valorTotal2: '',
+      data: '',
+    
+
+
+
     });
   };
+
 
     
     const handleChange = (e) => { // Manipulador de alteração de formulário
@@ -113,6 +145,7 @@ export default function Form({ toggleVisibility }) {
       }));
       updateValores(); // Atualize o pagamentoValor
     };
+    
 
 
     return (
@@ -127,8 +160,8 @@ export default function Form({ toggleVisibility }) {
 
 
               <div className="flex BarradePesquisa mb-8">
-                <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500"><IoCaretBackOutline className="text-2xl"/></button>
-                <button className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500"><IoCaretForwardSharp className="text-2xl"/></button>
+                <button onClick={leftclick} className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
+                <button onClick={rightclick} className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">RIGHT</button>
                 
                 <label className="pt-2 text-xl text-white ">Cliente:</label>
                 <input type="text" className="mx-4 p-2 rounded-lg" onChange={handleChange}></input>
@@ -136,7 +169,7 @@ export default function Form({ toggleVisibility }) {
                 <input type="text" className="mx-4 p-2 rounded-lg" onChange={handleChange}></input>
                 <label className="pt-2 text-xl text-white">Cod:</label>
                 <input type="text" className="mx-4 p-2 rounded-lg" onChange={handleChange}></input>
-                <button className="bg-[#00ff0059] mx-8 border-2 text-white p-2 rounded-lg hover:bg-green-500"><IoAdd className="text-2xl"/></button>
+                <button className="bg-[#00ff0059] mx-8 border-2 text-white p-2 rounded-lg hover:bg-green-500">+</button>
               </div>
 
 
@@ -186,10 +219,12 @@ export default function Form({ toggleVisibility }) {
                 </div>
 
                 <div id="data" className="m-1 flex flex-col">
-                  <label className="text-xl text-white">Data: {formData.data}</label>
+                  <label className="text-xl text-white">Data: </label>
+                  <h1 className="text-white pt-4">{formData.data}</h1>  
                 </div>
                 <div id="cod" className="m-1 flex flex-col">
-                  <label className="text-xl text-white">codigo: {formData.cod}</label>
+                  <label className="text-xl text-white">codigo: </label>
+                  <h1 className="text-white pt-4">{cod}</h1>  
             
                 </div>
                 <div id="obs" className="m-1 flex flex-col col-span-10">
@@ -335,7 +370,7 @@ export default function Form({ toggleVisibility }) {
 
               <div className="flex justify-center pt-[25px]">
             
-                <button className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Salvar</button>
+                <button type='submit' className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Salvar</button>
                 <button onClick={toggleVisibility} className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Fechar</button> 
               </div>
             </form>
@@ -345,4 +380,4 @@ export default function Form({ toggleVisibility }) {
       </main>
       </>
   );
-    }
+}
