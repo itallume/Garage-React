@@ -1,29 +1,21 @@
 'use client';
-
-import { useState, useEffect } from 'react';
 import './style.css'
-import Form from '@/components/Form';
-import { pedidos } from '@/data/seed.js'
-import PedidoCard from '@/components/PedidoCard';
+import Form from '../components/Form';
+import { pedidos } from '../data/seed.js'
+import PedidoCard from '../components/PedidoCard';
 import { IoAdd} from "react-icons/io5";
-import{TesteSupabase} from "./lib/teste" 
-import {loadServico} from "./lib/teste" 
-
+import {useServico} from './contexts/teste';
 
 
 
 export default function Home(){
-    const [isVisible, setIsVisible] = useState(false); // useState(false) para esconder o formulário
-
-    const handleClick = () => {
-      loadServico(),
-      toggleVisibility()
-      }
-
-    const toggleVisibility = () => {
-      setIsVisible(!isVisible); // inverte o valor de isVisible
-  }
-
+    const  {
+      handleClick,
+      isVisible,
+      toggleVisibility
+    } = useServico();
+    
+    
   return(
     <>
     <div className="flex items-center justify-center">
@@ -33,7 +25,7 @@ export default function Home(){
       </button>
 
 
-      {isVisible && <Form toggleVisibility={toggleVisibility} />}
+      {isVisible && <Form/>}
     </div>
 
 

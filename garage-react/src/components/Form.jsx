@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { pedidos as ped } from '@/data/seed';
+import { pedidos as ped } from '../data/seed';
 
 
 export default function Form({ toggleVisibility }) {

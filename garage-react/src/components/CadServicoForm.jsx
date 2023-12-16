@@ -1,6 +1,26 @@
 export default function CadServicoForm(){
+
+  const handleChange = (event) => {
+    let { name, value } = event.target;
+
+    setInvestmentFormData({ ...investmentFormData, [name]: value });
+  };
   
-    return (<>
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    investmentFormData.value = Number(investmentFormData.value) * 100;
+
+    investmentFormData.created_at = new Date(
+      investmentFormData.created_at + 'T00:00:00-03:00'
+    ).toISOString();
+
+    createInvestment(investmentFormData);
+
+    toggleShowInvestmentForm();
+  };
+
+  return (<>
     <section>
   <div className="items-center pt-[30px]">
     <form
@@ -137,7 +157,6 @@ export default function CadServicoForm(){
             name="btn"
             id="button"
             className="bg-white p-2 rounded-lg active:bg-[#00ff0059]"
-            onSubmit={createServico()}
           />
         </div>
       </div>
