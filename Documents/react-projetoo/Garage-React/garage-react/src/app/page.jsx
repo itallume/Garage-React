@@ -28,7 +28,7 @@ export default function Home(){
     <>
     <div className="flex items-center justify-center">
       <button onClick={toggleVisibility}
-        className="mt-8 text-white rounded border border-blue-600 bg-[#00ff0059] p-2">
+        className="mt-8 border-blue-600 bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">
         +
       </button>
 
