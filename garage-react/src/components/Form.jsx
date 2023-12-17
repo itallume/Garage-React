@@ -190,7 +190,7 @@ export default function Form({ toggleVisibility }) {
     return (
       <>
       {isVisibleCliente && <ClienteForm toggleVisibilityCliente={toggleVisibilityCliente}/>}
-      <main className="flex h-screen">
+      <main className="flex h-screen z-10">
         
       <div className="x w-1/6"></div>
       <section className="w-4/5 flex justify-center items-center flex-col">

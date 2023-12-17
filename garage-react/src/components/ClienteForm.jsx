@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function ClienteForm({ toggleVisibilityCliente }){
     return (<>
-      <main className="flex overflow-x-none justify-center absolute">       r
+      <main className="flex overflow-x-none justify-center absolute z-20">       
       <div className="w-1/6"></div>
         <section className="w-4/5 flex justify-center items-center flex-col">
           <section className="justify-center align-center" id="formulario">

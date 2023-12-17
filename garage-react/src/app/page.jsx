@@ -50,7 +50,7 @@ export default function Home(){
         <IoAdd />
       </button>
 
-
+    
       {isVisible && <Form toggleVisibility={toggleVisibility}/>}
     </div>
 
