@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import React from 'react'
+
 import { IoHome, IoPencil, IoReader } from "react-icons/io5";
 
 export default function Sidebar() {
