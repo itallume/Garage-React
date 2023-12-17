@@ -3,7 +3,7 @@ import './style.css'
 import Form from '../components/Form';
 
 import { IoAdd} from "react-icons/io5";
-import {ServicoProvider, Visbility, useServico} from './contexts/teste';
+import {ServicoProvider, Visibility, useServico} from './contexts/teste';
 import PedidoCard from '../components/PedidoCard';
 
 import { createClient } from '@supabase/supabase-js';
@@ -23,13 +23,13 @@ export default function Home(){
   const [pedidos, setpedidos] = useState([]);
 
 
-  useEffect(() => {
+  useEffect(() => { //useEffect é um hook do react que executa uma função quando o componente é montado
   const fetchpedidos = async () => {
     try{
       const { data, error } = await supabase
       .from('Pedidos')
       .select('*')
-      .order('id', { ascending: true });
+      .order('id', { descending: true })
       if (error) throw error;
 
       setpedidos(data || []);
@@ -40,7 +40,7 @@ export default function Home(){
   fetchpedidos();
 }, []);
    
-  const {isVisible, toggleVisibility} = Visbility()
+  const {isVisible, toggleVisibility} = Visibility()
     
   return(
     <>

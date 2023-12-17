@@ -12,19 +12,28 @@ export const ServicoContext = createContext({});
 
 
 
-export function Visbility() {
+export function Visibility() {
   const [isVisible, setIsVisible] = useState(false)
-
+  const [isVisibleCliente, setIsVisibleCliente] = useState(false)
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible); // inverte o valor de isVisible
   }
 
+  const toggleVisibilityCliente = () => {
+    setIsVisibleCliente(!isVisibleCliente); // inverte o valor de isVisible
+  }
+
   return {
       toggleVisibility,
       isVisible,
+      toggleVisibilityCliente,
+      isVisibleCliente
   }
+
+
 }
+
 
 
 

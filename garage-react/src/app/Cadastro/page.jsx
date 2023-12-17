@@ -19,8 +19,8 @@ export default function Cadastro(){
           <div className="flex items-center justify-center">
 
 
-            {isVisibleCadastro && <ClienteForm />}
-            {!isVisibleCadastro && <CadServicoForm />}
+            {!isVisibleCadastro && <ClienteForm />}
+            {isVisibleCadastro && <CadServicoForm />}
             
         </div>
       </div>

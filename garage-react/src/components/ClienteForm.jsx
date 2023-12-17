@@ -1,14 +1,14 @@
 import Link from 'next/link'
 
-export default function ClienteForm(){
+export default function ClienteForm({ toggleVisibilityCliente }){
     return (<>
-      <main className="flex h-screen overflow-x-none">        
+      <main className="flex overflow-x-none justify-center absolute">       r
       <div className="w-1/6"></div>
         <section className="w-4/5 flex justify-center items-center flex-col">
           <section className="justify-center align-center" id="formulario">
             <div className="justify-center items-center pt-[30px]">
 
-            <form className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)] transition-all duration-[0.5s] ease-[ease-in-out] hover:shadow-[10px_5px_rgb(255,255,255)] hover:transition-all hover:duration-[0.25s] hover:ease-[ease-in-out]" id="borda1">
+            <form className="border-2 flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)] transition-all duration-[0.5s] ease-[ease-in-out] hover:shadow-[10px_5px_rgb(255,255,255)] hover:transition-all hover:duration-[0.25s] hover:ease-[ease-in-out]" id="borda1">
 
               <div className="flex">
                 <button type="button" value="Left" className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
@@ -75,6 +75,7 @@ export default function ClienteForm(){
             <div className="flex justify-center pt-6">
               <button className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">Salvar</button>
               <button className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">Deletar</button>
+              <button onClick={toggleVisibilityCliente} className="border-2 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">Fechar</button>
             </div>
           </form>
           </div>

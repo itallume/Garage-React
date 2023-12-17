@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { pedidos as ped } from '../data/seed';
+import ClienteForm from './ClienteForm';
+import { Visibility } from '../app/contexts/teste';
 
 import supabase from '../app/services/supabase';
 
 export default function Form({ toggleVisibility }) {
-  const [formData, setFormData] = useState({ // Estado inicial do formulário
+  const initialState = { // Estado inicial do formulário
     cliente: '',
     cod: '',
     placa: '',
@@ -29,7 +31,44 @@ export default function Form({ toggleVisibility }) {
     pagamentoValor: '',
     valorTotal1: '',
     valorTotal2: '',
-  });
+  };
+
+    const {isVisibleCliente, toggleVisibilityCliente} = Visibility()
+
+
+
+    const [formData, setFormData] = useState(initialState); // Estado do formulário atual 
+    const [inputText, setInputText] = useState(''); // Estado do texto de entrada atual
+    const [matchingProdutos, setMatchingProdutos] = useState([]); // Estado dos produtos correspondentes
+  
+    useEffect(() => { // Atualize os produtos correspondentes sempre que o texto de entrada mudar
+      const fetchMatchingProdutos = async () => {
+        try {
+        const { data, error } = await supabase
+          .from('Produto')
+          .select('Nome')
+          .ilike('Nome', `${inputText}%`); // Busque por produtos que comecem com o texto de entrada
+          console.log(data)
+        if (error) {
+          console.error('Erro ao buscar Produtos:', error.message);
+          return;
+        }
+
+        setMatchingProdutos(data || []);
+      } catch (error) {
+        console.error('Erro na busca de produtos:', error.message);
+      }
+    };
+          
+    if (inputText.length > 0) {
+      fetchMatchingProdutos();
+    } else {
+      setMatchingProdutos([]);
+    }
+  }, [inputText]);
+
+
+
 
 
   const [pedidos] = useState(ped); // Estado inicial dos pedidos
@@ -68,10 +107,8 @@ export default function Form({ toggleVisibility }) {
       valorTotal1: valorTotal1.toFixed(2),
       valorTotal2: valorTotal2.toFixed(2),
       pagamentoValor: pagamentoValor.toFixed(2),
-       // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
-    }));
+  }));
   };
-
 
   const setCurrentDate = () => {
     const currentDate = new Date();
@@ -89,6 +126,8 @@ export default function Form({ toggleVisibility }) {
   const handleSubmit = async (e) => { // Manipulador de envio do formulário
     e.preventDefault(); // Evite que o formulário seja enviado
 
+    if (e.nativeEvent.submitter.id === 'save') {
+
     const newPedido = {
       
       ...formData,
@@ -105,6 +144,8 @@ export default function Form({ toggleVisibility }) {
 
 
     const { data, error } = await supabase.from('Pedidos').upsert([newPedido])
+
+
     if (error) {
       console.error('Erro ao enviar dados para o Supabase:', error.message);
     } else {
@@ -116,34 +157,16 @@ export default function Form({ toggleVisibility }) {
     pedidos.push(newPedido);
     console.log(newPedido) // Adicione o novo pedido ao array de pedidos
 
-    setFormData({ // Limpe o formulário
-    cliente: '',
-    cod: '',
-    placa: '',
-    modelo: '',
-    km: '',
-    vendedor: '',
-    nf: '',
-    data: '',
-    obs: '',
-    mercadoria: '',
-    mercadoria2: '',
-    qnt: 0,
-    qnt2: 0,
-    preco: 0.00,
-    mecanico: '',
-    mecanico2: '',
-    desconto: 0.00,
-    preco2: 0.00,
-    metodoPagamento: '',
-    bandeira: '',
-    parcelas: 0,
-    pagamentoValor: '',
-    valorTotal1: '',
-    valorTotal2: '',
+    setFormData({
+      ...initialState,
+      cod: pedidos.length + 1,
+      nf: 1,
+      data: setCurrentDate(),
+      
+
     });
   };
-
+  };
 
     
     const handleChange = (e) => { // Manipulador de alteração de formulário
@@ -152,21 +175,30 @@ export default function Form({ toggleVisibility }) {
         ...prevData, // Mantenha os valores anteriores
         [name]: value, // Atualize o valor do campo de entrada
       }));
-      updateValores(); // Atualize o pagamentoValor
+
+
+      if (name === 'mercadoria' || name === 'mercadoria2') {
+        setInputText(value);
+      }
+      updateValores();
     };
+
+
     
 
 
     return (
       <>
+      {isVisibleCliente && <ClienteForm toggleVisibility={toggleVisibilityCliente}/>}
       <main className="flex h-screen">
+        
       <div className="x w-1/6"></div>
       <section className="w-4/5 flex justify-center items-center flex-col">
+        
 
         <section className="justify-center align-center" id="formulario">
           <div className="justify-center items-center pt-[30px]">
             <form onSubmit={handleSubmit} className="flex justify-center flex-col bg-gray-900 px-8 py-8 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)] transition-all duration-[0.5s] ease-[ease-in-out] hover:shadow-[10px_5px_rgb(255,255,255)] hover:transition-all hover:duration-[0.25s] hover:ease-[ease-in-out]" id="borda1">
-
 
               <div className="flex BarradePesquisa mb-8">
                 <button onClick={leftclick} className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
@@ -208,13 +240,19 @@ export default function Form({ toggleVisibility }) {
                     </input>
                 </div>
 
-                <div id="cliente" className="m-1 flex flex-col col-span-2">
-                  <label className="text-xl text-white" htmlFor='cliente'>Cliente:</label>
-                  <input type="text" name="cliente" id="cliente" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"
-                    value={formData.cliente}
-                    onChange={handleChange}> 
+                <div id="cliente" className="m-1 col-span-2 flex flex-col">
+                <label className="text-xl text-white" htmlFor='cliente'>Cliente:</label>
+                  <div className='flex items-center'>
+
+                    <input style={{ width: '200px' }} type="text" name="cliente" id="cliente" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"
+                      value={formData.cliente}
+                      onChange={handleChange}> 
                     </input>
+                    <button onClick={toggleVisibilityCliente} className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">+</button>
                 </div>
+                </div>
+
+
                 <div id="vendedor" className="m-1 flex flex-col col-span-2">
                   <label className="text-xl text-white" htmlFor='vendendor'>Vendedor:</label>
                   <input type="text" name="vendedor" id="vendedor" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"
@@ -224,7 +262,7 @@ export default function Form({ toggleVisibility }) {
                 </div>
 
                 <div id="nf" className="m-1 flex flex-col">
-                  <label className="text-xl text-white">NF: {formData.nf}</label>
+                  <label className="text-xl text-white">NF:</label>
                 </div>
 
                 <div id="data" className="m-1 flex flex-col">
@@ -248,8 +286,13 @@ export default function Form({ toggleVisibility }) {
                   <label className="text-xl text-white">Mercadoria:</label>
                   <input type="text" name="mercadoria" id="mercadoria" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.mercadoria}
-                    onChange={handleChange}>
-                  </input>
+                    onChange={handleChange} />
+      <options className='text-white'>
+        
+        {matchingProdutos.map((produto) => (
+          <li key={produto.Nome}>{produto.Nome}</li>  
+        ))}
+      </options>
                 </div>
 
                 <div id="qnt" className="m-1 flex flex-col col-span-1">
@@ -292,8 +335,12 @@ export default function Form({ toggleVisibility }) {
                 <div id="mercadoria2" className="mx-1 flex flex-col col-span-6">
                   <input type="text" name="mercadoria2" id="mercadoria2" placeholder="" autocomplete="off" className="p-[10px] my-2 rounded-lg"
                     value={formData.mercadoria2}
-                    onChange={handleChange}>
-                    </input>
+                    onChange={handleChange} />
+      <a className='text-white'>
+        {matchingProdutos.map((produto) => (
+          <li key={produto.Nome}>{produto.Nome}</li>  
+        ))}
+      </a>
                 </div>
 
 
@@ -379,7 +426,7 @@ export default function Form({ toggleVisibility }) {
 
               <div className="flex justify-center pt-[25px]">
             
-                <button type='submit' className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Salvar</button>
+                <button id="save" type='submit' className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Salvar</button>
                 <button onClick={toggleVisibility} className="bg-[#00ff0059] border-2 text-white p-2 rounded-lg hover:bg-green-500">Fechar</button> 
               </div>
             </form>
