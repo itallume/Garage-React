@@ -3,10 +3,6 @@ import { pedidos as ped } from '../data/seed';
 
 import supabase from '../app/services/supabase';
 
-// Em supabase.js
-console.log('Supabase inicializado:', supabase);
-
-
 export default function Form({ toggleVisibility }) {
   const [formData, setFormData] = useState({ // Estado inicial do formulário
     cliente: '',
