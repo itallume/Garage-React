@@ -2,10 +2,9 @@
 import './style.css'
 import Form from '../components/Form';
 import { pedidos } from '../data/seed.js'
-import PedidoCard from '../components/PedidoCard';
 import { IoAdd} from "react-icons/io5";
 import {ServicoProvider, Visbility, useServico} from './contexts/teste';
-
+import PedidoCard from '../components/PedidoCard';
 
 export default function Home(){
     const  {

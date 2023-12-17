@@ -42,9 +42,8 @@ export function ServicoProvider({ children }) {
 
   const [isVisible, setIsVisible] = useState(false)
 
-
+  
   const [isVisibleCadastro, setIsVisibleCadastro] = useState(true)
-
   
   const toggleVisibility = () => {
      setIsVisible(!isVisible); // inverte o valor de isVisible

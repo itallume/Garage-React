@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react';
 import { pedidos as ped } from '../data/seed';
 
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = 'https://cmwtdetfvzqjujookolj.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtd3RkZXRmdnpxanVqb29rb2xqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg4NjUzNzksImV4cCI6MjAxNDQ0MTM3OX0.4XciDONXTVqJmICrJ7TX85tR_h53Qh3X1bM5EWvcKlE';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+
+
 
 export default function Form({ toggleVisibility }) {
   const [formData, setFormData] = useState({ // Estado inicial do formulário
@@ -15,16 +23,16 @@ export default function Form({ toggleVisibility }) {
     obs: '',
     mercadoria: '',
     mercadoria2: '',
-    qnt: '',
-    qnt2: '',
-    preco: '',
+    qnt: 0,
+    qnt2: 0,
+    preco: 0.00,
     mecanico: '',
     mecanico2: '',
-    desconto: '',
-    preco2: '',
+    desconto: 0.00,
+    preco2: 0.00,
     metodoPagamento: '',
     bandeira: '',
-    parcelas: '',
+    parcelas: 0,
     pagamentoValor: '',
     valorTotal1: '',
     valorTotal2: '',
@@ -85,13 +93,15 @@ export default function Form({ toggleVisibility }) {
   };
 
 
-  const handleSubmit = (e) => { // Manipulador de envio do formulário
+  const handleSubmit = async (e) => { // Manipulador de envio do formulário
     e.preventDefault(); // Evite que o formulário seja enviado
 
     const newPedido = {
+      
       ...formData,
       data: setCurrentDate(),
       cod: pedidos.length + 1,
+      nf: 1,
       preco: parseFloat(formData.preco || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
       preco2: parseFloat(formData.preco2 || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
       valorTotal1: parseFloat(formData.preco * formData.qnt || 0).toFixed(2), // Garanta que seja formatado como número de ponto flutuante com 2 casas decimais
@@ -100,7 +110,18 @@ export default function Form({ toggleVisibility }) {
     };    
 
 
-    pedidos.push(newPedido); // Adicione o novo pedido ao array de pedidos
+
+    const { data, error } = await supabase.from('Pedidos').upsert([newPedido])
+    if (error) {
+      console.error('Erro ao enviar dados para o Supabase:', error.message);
+    } else {
+      console.log('Dados enviados com sucesso para o Supabase:', data);
+    }
+
+
+    
+    pedidos.push(newPedido);
+    console.log(newPedido) // Adicione o novo pedido ao array de pedidos
 
     setFormData({ // Limpe o formulário
       cliente: '',
@@ -131,6 +152,10 @@ export default function Form({ toggleVisibility }) {
     
 
 
+
+
+
+      
 
     });
   };

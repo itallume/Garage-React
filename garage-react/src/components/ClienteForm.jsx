@@ -29,7 +29,7 @@ export default function ClienteForm(){
                 <input type="text" name="nome" id="nome" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="datacadastro" className="m-1 flex flex-col">
-                <label className="text-xl text-white">cadastroData:</label>
+                <label className="text-xl text-white">Data:</label>
               </div>
               <div id="codigo" className="m-1 flex flex-col">
                 <label className="text-xl text-white">codigo:</label>
@@ -40,7 +40,7 @@ export default function ClienteForm(){
                 <input type="text" name="cpf" id="cpf" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="rg" className="m-1 flex flex-col col-span-2">
-                <label className="text-xl text-white"></label>
+                <label className="text-xl text-white">rg:</label>
                 <input type="text" name="rg" id="rg" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="cep" className="m-1 flex flex-col">
