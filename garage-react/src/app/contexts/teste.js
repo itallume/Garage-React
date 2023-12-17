@@ -27,6 +27,7 @@ export function ServicoProvider({ children }) {
     console.log('oie >.<')
     setIsVisibleCadastro(false); //
   }
+  
 
   const toggleToTrue = () => {
     setIsVisibleCadastro(true)
