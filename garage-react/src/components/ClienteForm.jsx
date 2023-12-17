@@ -14,61 +14,61 @@ export default function ClienteForm(){
                 <button type="button" value="Left" className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">LEFT</button>
                 <button type="button" value="Right" className="border-2 mx-1 text-white p-2 rounded-lg bg-[#00ff0059] hover:bg-green-500">RIGHT</button>
                 fer
-                <label className="pt-2 text-xl text-white" for="nome">nome:</label>
+                <label className="pt-2 text-xl text-white">nome:</label>
                 <input type="text" value="" name="" id="" className="mx-4 p-2 rounded-lg "></input>
-                <label className="pt-2 text-xl text-white" for="nome">cpf:</label>
+                <label className="pt-2 text-xl text-white">cpf:</label>
                 <input type="text" value="" name="" id="" className="mx-4 p-2 rounded-lg "></input>
-                <label className="pt-2 text-xl text-white" for="nome">cod:</label>
+                <label className="pt-2 text-xl text-white">cod:</label>
                 <input type="text" value="" name="" id="" className="mx-4 p-2 rounded-lg "></input>
                 <button type="button" className="bg-[#00ff0059] mx-8 border-2 text-white p-2 rounded-lg hover:bg-green-500">+</button>
               </div>
 
             <div className="grid grid-cols-5 gap-4">
               <div id="nome" className="m-1 flex flex-col col-span-3">
-                <label className="text-xl text-white" for="nome">nome:</label>
+                <label className="text-xl text-white">nome:</label>
                 <input type="text" name="nome" id="nome" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="datacadastro" className="m-1 flex flex-col">
-                <label className="text-xl text-white" for="datacadastro">Data:</label>
+                <label className="text-xl text-white">cadastroData:</label>
               </div>
               <div id="codigo" className="m-1 flex flex-col">
-                <label className="text-xl text-white" for="codigo">codigo:</label>
+                <label className="text-xl text-white">codigo:</label>
               </div>
 
               <div id="cpf" className="m-1 flex flex-col col-span-2">
-                <label className="text-xl text-white" for="cpf">cpf:</label>
+                <label className="text-xl text-white">cpf:</label>
                 <input type="text" name="cpf" id="cpf" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="rg" className="m-1 flex flex-col col-span-2">
-                <label className="text-xl text-white" for="rg">rg:</label>
+                <label className="text-xl text-white"></label>
                 <input type="text" name="rg" id="rg" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="cep" className="m-1 flex flex-col">
-                <label className="text-xl text-white" for="cep">cep:</label>
+                <label className="text-xl text-white">cep:</label>
                 <input type="text" name="cep" id="cep" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="rua" className="m-1 flex flex-col col-span-2">
-                <label className="text-xl text-white" for="rua">rua:</label>
+                <label className="text-xl text-white">rua:</label>
                 <input type="text" name="rua" id="rua" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="bairro" className="m-1 flex flex-col col-span-2">
-                <label className="text-xl text-white" for="bairro">bairro:</label>
+                <label className="text-xl text-white">bairro:</label>
                 <input type="text" name="bairro" id="bairro" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="cidade" className="m-1 flex flex-col">
-                <label className="text-xl text-white" for="cidade">cidade:</label>
+                <label className="text-xl text-white">cidade:</label>
                 <input type="text" name="cidade" id="cidade" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="numero" className="m-1 flex flex-col">
-                <label className="text-xl text-white" for="numero">numero:</label>
+                <label className="text-xl text-white">numero:</label>
                 <input type="text" name="numero" id="numero" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="email" className="m-1 flex flex-col col-span-2">
-                <label className="text-xl text-white" for="email">Email:</label>
+                <label className="text-xl text-white">Email:</label>
                 <input type="text" name="email" id="email" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
               <div id="telefone" className="m-1 flex flex-col col-span-2">
-                <label className="text-xl text-white" for="telefone">telefone:</label>
+                <label className="text-xl text-white">telefone:</label>
                 <input type="text" name="telefone" id="telefone" placeholder="" autocomplete="off" className="p-[10px] rounded-lg"></input>
               </div>
             </div>

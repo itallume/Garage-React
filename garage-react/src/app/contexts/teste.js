@@ -4,6 +4,31 @@ import {read, create, remove} from "../services/supabase";
 
 export const ServicoContext = createContext({});
 
+
+
+
+
+
+
+
+export function Visbility() {
+  const [isVisible, setIsVisible] = useState(false)
+
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible); // inverte o valor de isVisible
+  }
+
+  return {
+      toggleVisibility,
+      isVisible,
+  }
+}
+
+
+
+
+
 export function ServicoProvider({ children }) {
   
   const servicoData = {
@@ -17,11 +42,13 @@ export function ServicoProvider({ children }) {
 
   const [isVisible, setIsVisible] = useState(false)
 
-  const [isVisibleCadastro, setIsVisibleCadastro] = useState(true);
 
+  const [isVisibleCadastro, setIsVisibleCadastro] = useState(true)
+
+  
   const toggleVisibility = () => {
-    setIsVisible(!isVisible); // inverte o valor de isVisible
-  }
+     setIsVisible(!isVisible); // inverte o valor de isVisible
+   }
 
   const toggleToFalse = () => {
     console.log('oie >.<')
