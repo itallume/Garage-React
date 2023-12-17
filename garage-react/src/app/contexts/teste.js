@@ -35,6 +35,21 @@ export function Visibility() {
 }
 
 
+export function VisibilityCliente() {
+  const [isVisibleCliente, setIsVisibleCliente] = useState(false)
+
+
+  const toggleVisibilityCliente = () => {
+    setIsVisibleCliente(!isVisibleCliente); // inverte o valor de isVisible
+  }
+
+  return {
+      toggleVisibilityCliente,
+      isVisibleCliente
+  }
+}
+
+
 
 
 

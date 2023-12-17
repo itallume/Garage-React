@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { pedidos as ped } from '../data/seed';
 import ClienteForm from './ClienteForm';
-import { Visibility } from '../app/contexts/teste';
+import { VisibilityCliente } from '../app/contexts/teste';
 
 import supabase from '../app/services/supabase';
 
@@ -33,7 +33,7 @@ export default function Form({ toggleVisibility }) {
     valorTotal2: '',
   };
 
-    const {isVisibleCliente, toggleVisibilityCliente} = Visibility()
+    const {isVisibleCliente, toggleVisibilityCliente} = VisibilityCliente()
 
 
 
@@ -189,7 +189,7 @@ export default function Form({ toggleVisibility }) {
 
     return (
       <>
-      {isVisibleCliente && <ClienteForm toggleVisibility={toggleVisibilityCliente}/>}
+      {isVisibleCliente && <ClienteForm toggleVisibilityCliente={toggleVisibilityCliente}/>}
       <main className="flex h-screen">
         
       <div className="x w-1/6"></div>
