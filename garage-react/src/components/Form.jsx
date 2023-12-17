@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
 import { pedidos as ped } from '../data/seed';
 
-import { createClient } from '@supabase/supabase-js';
+import supabase from '../app/services/supabase';
 
-const supabaseUrl = 'https://cmwtdetfvzqjujookolj.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtd3RkZXRmdnpxanVqb29rb2xqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg4NjUzNzksImV4cCI6MjAxNDQ0MTM3OX0.4XciDONXTVqJmICrJ7TX85tR_h53Qh3X1bM5EWvcKlE';
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-
+// Em supabase.js
+console.log('Supabase inicializado:', supabase);
 
 
 export default function Form({ toggleVisibility }) {
@@ -124,39 +121,30 @@ export default function Form({ toggleVisibility }) {
     console.log(newPedido) // Adicione o novo pedido ao array de pedidos
 
     setFormData({ // Limpe o formulário
-      cliente: '',
-      cod: '',
-      placa: '',
-      modelo: '',
-      km: '',
-      vendedor: '',
-      nf: '',
-      data: '',
-      obs: '',
-      mercadoria: '',
-      mercadoria2: '',
-      qnt: '',
-      qnt2: '',
-      preco: '',
-      mecanico: '',
-      mecanico2: '',
-      desconto: '',
-      preco2: '',
-      metodoPagamento: '',
-      bandeira: '',
-      parcelas: '',
-      pagamentoValor: '',
-      valorTotal1: '',
-      valorTotal2: '',
-      data: '',
-    
-
-
-
-
-
-      
-
+    cliente: '',
+    cod: '',
+    placa: '',
+    modelo: '',
+    km: '',
+    vendedor: '',
+    nf: '',
+    data: '',
+    obs: '',
+    mercadoria: '',
+    mercadoria2: '',
+    qnt: 0,
+    qnt2: 0,
+    preco: 0.00,
+    mecanico: '',
+    mecanico2: '',
+    desconto: 0.00,
+    preco2: 0.00,
+    metodoPagamento: '',
+    bandeira: '',
+    parcelas: 0,
+    pagamentoValor: '',
+    valorTotal1: '',
+    valorTotal2: '',
     });
   };
 

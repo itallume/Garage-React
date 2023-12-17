@@ -1,9 +1,14 @@
+
+
 import { createClient } from '@supabase/supabase-js';
 
 const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtd3RkZXRmdnpxanVqb29rb2xqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg4NjUzNzksImV4cCI6MjAxNDQ0MTM3OX0.4XciDONXTVqJmICrJ7TX85tR_h53Qh3X1bM5EWvcKlE"
 const API_URL = "https://cmwtdetfvzqjujookolj.supabase.co";
 
 const supabase = createClient(API_URL, API_KEY);
+
+
+export default supabase;
 
 export async function create(resource, data) {
   const { data: createdData, error } = await supabase

@@ -2,6 +2,7 @@
 import { createContext, useState, useContext } from 'react';
 import {read, create, remove} from "../services/supabase";
 
+
 export const ServicoContext = createContext({});
 
 
@@ -44,7 +45,7 @@ export function ServicoProvider({ children }) {
 
   
   const [isVisibleCadastro, setIsVisibleCadastro] = useState(true)
-  
+
   const toggleVisibility = () => {
      setIsVisible(!isVisible); // inverte o valor de isVisible
    }
