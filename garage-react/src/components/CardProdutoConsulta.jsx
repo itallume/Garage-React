@@ -4,7 +4,7 @@ import { useServico } from "../app/contexts/teste";
 export default function CardProdutoConsulta({result}){
 
     return (<>
-    
+    <div className="flex justify-center items-center ml-[50px] pt-[30px]">
         <div className="bg-white rounded-lg shadow-md p-6 max-w-xs mx-auto">
       <h2 className="text-xl font-semibold mb-4">Produto ID:{result && result.Código}</h2>
       <div className="mb-4">
@@ -44,7 +44,7 @@ export default function CardProdutoConsulta({result}){
         <p className="text-gray-900 leading-relaxed">{result && result.ValorCusto}</p>
       </div>
     </div>
-    
+  </div> 
   
     </>)
 }

@@ -1,8 +1,8 @@
 import { useServico } from "../app/contexts/teste"
 export default function CardClienteConsulta({result}){
     return (<>
-
-        <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
+<div className="flex justify-center items-center ml-[50px] pt-[30px]">
+        <div className="bg-white rounded-lg shadow-md p-6 max-w-xs mx-auto">
       <h2 className="text-xl font-semibold mb-4">Cliente ID:{result && result.id}</h2>
       <div className="mb-4 grid grid-cols-2 gap-4">
         <div>
@@ -73,7 +73,7 @@ export default function CardClienteConsulta({result}){
         </div>
       </div>
     </div>
-    
+    </div> 
     
     </>)
 }

@@ -49,8 +49,7 @@ export default function ConsultaCliente(){
     <section>
         <div className="items-center pt-[30px]">
             
-            <form className="flex flex-col justify-center h-[20rem] w-[20rem] bg-gray-900 w-10/12 px-24 py-12 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)]">
-                        <h1>Consulta Cliente:</h1>
+            <form className="flex flex-col h-[20rem] w-[20rem] bg-gray-900 w-10/12 px-24 py-12 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)]">
                         <div
                             id="cpfCliente"
                             className="m-1 flex flex-col mr-[15px] mb-[15px]"
