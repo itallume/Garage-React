@@ -3,44 +3,24 @@ import './style.css'
 import Form from '../components/Form';
 
 import { IoAdd} from "react-icons/io5";
-import {ServicoProvider, Visibility, useServico} from './contexts/teste';
+import {useServico} from './contexts/teste';
 import PedidoCard from '../components/PedidoCard';
-
-import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 import supabase from './services/supabase';
-
+import InfoPedidoDiv from '../components/InfoPedidoDiv';
 
 export default function Home(){
     const  {
-      handleClick,
-      // isVisible,
-      // toggleVisibility
+      isVisible,
+      toggleVisibility,
+      loadPedidos,
+      pedidos
     } = useServico();
-  
 
-
-  const [pedidos, setpedidos] = useState([]);
-
-
-  useEffect(() => { //useEffect é um hook do react que executa uma função quando o componente é montado
-  const fetchpedidos = async () => {
-    try{
-      const { data, error } = await supabase
-      .from('Pedidos')
-      .select('*')
-      .order('id', { descending: true })
-      if (error) throw error;
-
-      setpedidos(data || []);
-    }catch (error) {
-      console.error(error);
-    }
-  }
-  fetchpedidos();
+  useEffect(() => { 
+  loadPedidos();
 }, []);
    
-  const {isVisible, toggleVisibility} = Visibility()
     
   return(
     <>
@@ -51,7 +31,7 @@ export default function Home(){
       </button>
 
     
-      {isVisible && <Form toggleVisibility={toggleVisibility}/>}
+      {isVisible && <Form/>}
     </div>
 
 

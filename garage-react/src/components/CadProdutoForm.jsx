@@ -1,30 +1,29 @@
-export default function CadServicoForm(){
+import { useServico } from "../app/contexts/teste";
 
-  const handleChange = (event) => {
-    let { name, value } = event.target;
+export default function CadProdutoForm(){
+    const {
+      ProdutoData, 
+      setProdutoData,
+      handleCreateProduto,
+      createProduto
+    } = useServico()
 
-    setInvestmentFormData({ ...investmentFormData, [name]: value });
-  };
+    const handleChange = (event) => {
+      let { name, value } = event.target;
+      
+      setProdutoData({ ...ProdutoData, [name]: value });
+    };
   
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    investmentFormData.value = Number(investmentFormData.value) * 100;
-
-    investmentFormData.created_at = new Date(
-      investmentFormData.created_at + 'T00:00:00-03:00'
-    ).toISOString();
-
-    createInvestment(investmentFormData);
-
-    toggleShowInvestmentForm();
-  };
-
+    const handleFormSubmit = async (event) => {
+      event.preventDefault(); 
+      await createProduto(ProdutoData); 
+      alert("Produto cadastrado com sucesso!")                                  
+    };
   return (<>
     <section>
   <div className="items-center pt-[30px]">
-    <form
-      className="flex justify-center bg-gray-900 px-24 py-12 rounded-lg"
+    <form onSubmit={(event) => handleFormSubmit(event)}
+      className="flex justify-center bg-gray-900 px-24 py-12 rounded-lg border-white shadow-[10px_5px_rgb(255,255,255)]"
     >
       {/* Conteúdo do retângulo */}
       <div className="">
@@ -37,8 +36,10 @@ export default function CadServicoForm(){
               Nome do Produto:
             </label>
             <input
+              onChange={handleChange}
+              value={ProdutoData.Nome}
               type="text"
-              name="nomeProduto"
+              name="Nome"
               id="nomeProduto"
               placeholder=""
               autoComplete="off"
@@ -53,8 +54,10 @@ export default function CadServicoForm(){
               Fabricante:
             </label>
             <input
+              onChange={handleChange}
+              value={ProdutoData.Fabricante}
               type="text"
-              name="fabricante"
+              name="Fabricante"
               id="fabricante"
               placeholder=""
               autoComplete="off"
@@ -68,18 +71,15 @@ export default function CadServicoForm(){
             <label htmlFor="Fornecedor" className="text-xl text-white">
               Fornecedor:
             </label>
-            <select
+            <input
+              onChange={handleChange}
+              value={ProdutoData.Fornecedor}
+              autoComplete="off"
               name="Fornecedor"
               id="Fornecedor"
               className="p-[10px] rounded-lg bg-white"
             >
-              <option value="Master_Auto_Parts">Master Auto Parts</option>
-              <option value="CarroPeças_Brasil">CarroPeças Brasil</option>
-              <option value="Nova_Autopeças">Nova Autopeças</option>
-              <option value="Carro_&_Cia_Distribuidora">
-                Carro &amp; Cia Distribuidora
-              </option>
-            </select>
+            </input>
           </div>
           <div
             id="valorProduto"
@@ -89,8 +89,10 @@ export default function CadServicoForm(){
               Valor de custo:
             </label>
             <input
+              onChange={handleChange}
+              value={ProdutoData.ValorCusto}
               type="text"
-              name="valorProduto"
+              name="ValorCusto"
               id="valorProduto"
               placeholder=""
               autoComplete="off"
@@ -108,15 +110,17 @@ export default function CadServicoForm(){
               Porcentagem de lucro:
             </label>
             <input
+              onChange={handleChange}
+              value={ProdutoData.PorcentagemLucro}
               type="text"
-              name="porcentagem_lucroProduto"
+              name="PorcentagemLucro"
               id="porcentagem_lucroProduto"
               placeholder=""
               autoComplete="off"
               className="p-[10px] rounded-lg bg-white"
             />
           </div>
-          <div id="IdProtudo" className="m-1 flex flex-col mr-[15px] mb-[15px]">
+          <div id="IdProduto" className="m-1 flex flex-col mr-[15px] mb-[15px]">
             <label className="text-xl text-white" htmlFor="IdProduto">
               Código do Produto:
             </label>
@@ -124,7 +128,6 @@ export default function CadServicoForm(){
               type="text"
               readOnly="readonly"
               defaultValue="(AutoNumeração)"
-              name="IdProduto"
               id="IdProduto"
               placeholder=""
               autoComplete="off"
@@ -137,22 +140,24 @@ export default function CadServicoForm(){
           className="m-1 flex flex-col mr-[15px] mb-[15px]"
         >
           <label className="text-xl text-white" htmlFor="DescricaoProduto">
-            Descriçao do Produto:
+            Descrição do Produto:
           </label>
           <textarea
+            onChange={handleChange}
+            value={ProdutoData.Descrição}
             type="text"
-            name="DescricaoProduto"
-            id="DescricaoProduto"
+            name="Descrição"
+            id="Descrição"
             placeholder=""
             autoComplete="off"
             className="p-[10px] rounded-lg bg-white "
             rows={3}
-            defaultValue={"             \n                "}
+
           />
         </div>
         <div className="flex justify-center pt-[25px]">
           <input
-            type="button"
+            type="submit"
             defaultValue="Salvar"
             name="btn"
             id="button"

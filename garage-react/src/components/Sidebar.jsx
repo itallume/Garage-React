@@ -31,7 +31,7 @@ export default function Sidebar() {
           </div>
 
           <div className="m-[30px] flex flex-col justify-center items-center text-base text-white transition hover:text-black duration-150">
-            <Link href="/mercadoria" className="flex flex-col items-center">
+            <Link href="/Consulta" className="flex flex-col items-center">
               <IoReader className="text-3xl " />
               <p>Consultas</p>
             </Link>
