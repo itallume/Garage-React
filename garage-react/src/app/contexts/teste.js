@@ -3,6 +3,21 @@ import { createContext, useState, useContext } from 'react';
 import {read, create, remove} from "../services/supabase";
 
 
+
+export function VisibilityCliente() {
+  const [isVisibleCliente, setIsVisibleCliente] = useState(false)
+
+
+  const toggleVisibilityCliente = () => {
+    setIsVisibleCliente(!isVisibleCliente); // inverte o valor de isVisible
+  }
+
+  return {
+      toggleVisibilityCliente,
+      isVisibleCliente
+  }
+}
+
 export const ServicoContext = createContext({});
 
 // export function Visibility() {
@@ -46,22 +61,30 @@ export const ServicoContext = createContext({});
 export default function ServicoProvider({ children }) {
 
   const initialPedidoData = {
-    cliente:'',
+    cliente: '',
+    cod: '',
     placa: '',
     modelo: '',
     km: '',
     vendedor: '',
+    nf: '',
     data: '',
     obs: '',
     mercadoria: '',
-    qnt: '',
-    preco: '',
+    mercadoria2: '',
+    qnt: 0,
+    qnt2: 0,
+    preco: 0.00,
     mecanico: '',
-    desconto: '',
+    mecanico2: '',
+    desconto: 0.00,
+    preco2: 0.00,
     metodoPagamento: '',
     bandeira: '',
-    parcelas: '',
-    pagamentoValor: ''
+    parcelas: 0,
+    pagamentoValor: '',
+    valorTotal1: '',
+    valorTotal2: '',
   };
   
   const initialProdutoData = {
@@ -228,45 +251,37 @@ export default function ServicoProvider({ children }) {
     remove('servico', id);
   };
 
-  // const createPedido = async (pedido) => {
-  //    try {
-  //      const newPedido = await create('Pedidos', pedido);
-  //      setPedidos((prevPedidos) => [...prevPedidos, newPedido]);
-  //    } catch (error) {
-  //      console.error('Erro ao criar pedido:', error);
-  //    }
-  //  };
+    const createPedido2 = async (pedido) => {
+       try {
+         const newPedido = await create('Pedidos', pedido);
+         setPedidos((prevPedidos) => [...prevPedidos, newPedido]);
+       } catch (error) {
+         console.error('Erro ao criar pedido:', error);
+       }
+     };
 
-  const removePedido = async (id) => { // await removePedido(id) para usar
-    try {
-
-
-      const NUM = Number(id); // Converte o ID para um número inteiro decimal
-      console.log(id)
-      console.log(NUM)
-      if (!Number.isInteger(NUM)) { // Verifica se o ID é um número inteiro válido
-        throw new Error('ID do pedido não é um número inteiro válido.');
-      }
-
-      
-
-
-      // Remove o pedido do Supabase usando o ID
-      await remove('Pedidos', NUM); // NUM é o ID do pedido convertido para inteiro
-  
-
-        
-      // Atualiza o estado para refletir a remoção localmente
-      setPedido((prevPedidos) =>
-        prevPedidos.filter((pedido) => pedido.id !== NUM)
-      );
-    } catch (error) {
-      console.error('Erro ao excluir pedido:', error);
-    }
+     const removePedido = async (id) => {
+      try {
+        const NUM = Number(id);
+        console.log(id);
+        console.log(NUM);
+        if (!Number.isInteger(NUM)) {
+          throw new Error('ID do pedido não é um número inteiro válido.');
+        }
     
-
-  
-  };
+        // Remove o pedido do Supabase usando o ID
+        await remove('Pedidos', NUM);
+    
+        // Atualiza o estado para refletir a remoção localmente
+        setPedido((prevPedidos) => {
+          // Ensure prevPedidos is an array before using filter
+          const pedidosArray = Array.isArray(prevPedidos) ? prevPedidos : [];
+          return pedidosArray.filter((pedido) => pedido.id !== NUM);
+        });
+      } catch (error) {
+        console.error('Erro ao excluir pedido:', error);
+      };
+    };
 
 
   return (
@@ -327,7 +342,8 @@ export default function ServicoProvider({ children }) {
         createProduto,
         Pedido, 
         setPedido,
-        initialPedidoData
+        initialPedidoData,
+        createPedido2
       }}
     >
       {children}
