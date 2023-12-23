@@ -41,10 +41,11 @@ O objetivo principal do **Garage-React** é fornecer uma plataforma centralizada
 
 1. Clone o repositório para sua máquina local.
 2. Execute `npm install` para instalar as dependências.
+3. Caso nao funcione utilize o comando `npm install next@latest react@latest react-dom@latest` no seu terminal
 
 ### Execução:
 
-1. Execute `npm start` para iniciar o aplicativo em modo de desenvolvimento.
+1. Execute `npm run dev` para iniciar o aplicativo em modo de desenvolvimento.
 2. Abra http://localhost:3000 no navegador para visualizar o aplicativo.
 
 ## Estrutura do Projeto
@@ -65,19 +66,10 @@ Este projeto foi desenvolvido com o intuito de facilitar a gestão de lojas auto
 
 
 
-DEPENDENCIAS:
 
-1. Instalar Next
+## Caso ocorra algum erro tente os seguintes comandos em ordem:
 
-comando: npm install next@latest react@latest react-dom@latest
-
-2. Iniciar projeto
-
-comando: npm run dev
-
-PASSOS DE FATO:
-
-1. nvm install --lts 
------- node -v 
-2. npm i
-3. npm run dev
+1. `nvm install --lts `
+2. `node -v `
+3. `npm i`
+4. `npm run dev`
